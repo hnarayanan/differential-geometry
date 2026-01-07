@@ -108,6 +108,33 @@ learning.
 
 ---
 
+## The Capstone Object
+
+### The capstone: one object, six views
+
+Throughout this curriculum, you will return to a single geometric
+object: **geodesic flow on the 2-sphere**.
+
+The sphere is simple enough to compute with, rich enough to illustrate
+every concept. As your understanding deepens, the same object reveals
+new structure:
+
+| Phase | What you see |
+|-------|--------------|
+| 1 | Great circles as curves with constant curvature, zero torsion |
+| 2 | S² as a manifold; geodesics as integral curves of a vector field on TS² |
+| 3 | Geodesics via Levi-Civita; parallel transport; holonomy around triangles |
+| 4 | Geodesic flow as Hamiltonian system on T*S²; angular momentum as momentum map |
+| 5 | Frame bundle F(S²); Levi-Civita as connection; curvature as field strength |
+| 6 | Learning geodesics; the sphere in geometric deep learning |
+
+Each phase ends with a capstone exercise: revisit the sphere with your
+new tools. Watch the same object become richer. This is what
+understanding feels like — not learning new facts, but seeing familiar
+things with new eyes.
+
+---
+
 ## When the path is hard
 
 You will get stuck. This is not a sign of failure; it's a sign you're
@@ -838,6 +865,17 @@ geometry. This essay previews the manifold philosophy.
 phase. What worked? What would you do differently? How has explaining
 changed your understanding?
 
+**Phase 1 Capstone: The sphere as surface**
+
+Great circles are geodesics of the sphere. Verify this:
+- Parametrise a great circle as a curve in ℝ³
+- Compute its curvature κ and torsion τ using Frenet-Serret
+- Show κ = 1/R (constant), τ = 0 (planar)
+- Compute the Gaussian curvature K of the sphere; verify K = 1/R²
+- Use Gauss-Bonnet: ∫∫ K dA = 4π = 2πχ(S²), confirming χ = 2
+
+*You see*: geodesics as curves, curvature as a number.
+
 ### Phase 1 Content Creation
 
 **Primary deliverable: Video — "Why You Can't Flatten a Sphere" (15-20
@@ -1357,6 +1395,20 @@ finished Phase 1 why the abstract framework is worth the trouble.
 explanations worked best? Where did the audience (real or imagined)
 get stuck? What would you do differently?
 
+**Phase 2 Capstone: The sphere as manifold**
+
+Now see the sphere abstractly:
+- Write an atlas for S² (stereographic projection from north and south
+  poles)
+- Verify the transition function is smooth
+- Express a great circle as a curve γ: ℝ → S² in each chart
+- The velocity γ'(t) lives in T_{γ(t)}S² — visualise this
+- Write the vector field on TS² whose integral curves are geodesics
+  (you'll need the geodesic equation, which you'll derive properly in
+  Phase 3)
+
+*You see*: the sphere as intrinsic object, geodesics as flows.
+
 ### Phase 2 Content Creation
 
 **Primary deliverable: Video — "Automatic Differentiation IS
@@ -1872,6 +1924,19 @@ general relativity. What remains constant? What generalises?
 **Content retrospective**: How has your understanding of curvature
 evolved? What was most difficult? What finally made it click?
 
+**Phase 3 Capstone: The sphere with connection**
+
+Now you have the tools:
+- Compute Christoffel symbols for the round metric on S² in spherical
+  coordinates
+- Write the geodesic equation; verify great circles satisfy it
+- Parallel transport a vector around a spherical triangle
+- Compute the holonomy angle; verify it equals the enclosed area (the
+  angular excess)
+- This is Gauss-Bonnet in action: holonomy = ∫∫ K dA
+
+*You see*: geodesics from connection, curvature from holonomy.
+
 ### Phase 3 Content Creation
 
 **Primary deliverable: Interactive visualiser — "Parallel Transport
@@ -1947,6 +2012,179 @@ Before proceeding, verify you can:
 *You've been climbing toward this view. Now you arrive.*
 
 *This is your destination. Everything before was preparation.*
+
+## The Lie Groups On-Ramp
+
+### Prelude to Phase 4: Lie groups and Lie algebras
+
+**Duration: 1.5-2 weeks**
+
+Before entering symplectic geometry, you need basic fluency with Lie
+groups. Momentum maps, gauge transformations, and the deepest parts of
+mechanics all speak this language.
+
+This is not a comprehensive treatment — that would be another
+curriculum. This is the minimum you need: enough to recognise a Lie
+group, find its Lie algebra, and understand how the adjoint and
+coadjoint representations connect algebra to geometry.
+
+**Week 1: Lie groups by example**
+
+**What is a Lie group?**
+
+A Lie group is a group that's also a smooth manifold, with smooth
+group operations. The examples are more important than the definition:
+
+- **S¹ = U(1)**: The circle, with group operation being addition of
+  angles (or multiplication of unit complex numbers). This is the
+  symmetry group of electromagnetism.
+
+- **SO(3)**: Rotations of ℝ³. A 3-dimensional manifold (topologically
+  ℝP³). The symmetry group of the sphere, and of any system with
+  rotational symmetry.
+
+- **SE(3)**: Rigid motions of ℝ³ (rotations + translations). A
+  6-dimensional group. The symmetry group of a rigid body moving
+  freely in space.
+
+- **SU(2)**: 2×2 unitary matrices with determinant 1. Topologically
+  S³. Double covers SO(3). The symmetry group of spin.
+
+**The Lie algebra as tangent space at identity**
+
+Every Lie group G has a Lie algebra 𝔤 = T_eG, the tangent space at the
+identity element. This is a vector space with extra structure: the Lie
+bracket [·, ·].
+
+For matrix groups, the Lie algebra consists of matrices, and the
+bracket is [A, B] = AB - BA.
+
+- 𝔰𝔬(3) = {3×3 skew-symmetric matrices}. Dimension 3. Bracket is
+  matrix commutator.
+- 𝔰𝔢(3) = {4×4 matrices of the form [[ω, v], [0, 0]] with ω ∈ 𝔰𝔬(3), v
+  ∈ ℝ³}. Dimension 6.
+- 𝔰𝔲(2) = {2×2 skew-Hermitian traceless matrices}. Dimension 3.
+  Isomorphic to 𝔰𝔬(3) as Lie algebras.
+
+**The exponential map**
+
+The exponential map exp: 𝔤 → G sends a Lie algebra element to a group
+element. For matrix groups, this is the matrix exponential:
+
+$$\exp(A) = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots$$
+
+Geometrically: exp(tξ) is the one-parameter subgroup generated by ξ ∈
+𝔤. It's the flow of the left-invariant vector field determined by ξ.
+
+For SO(3): exp maps skew-symmetric matrices to rotation matrices. The
+axis of rotation is encoded in the matrix; the angle is the norm.
+
+**Computation:**
+
+```python
+import jax.numpy as jnp
+from jax.scipy.linalg import expm
+
+def so3_basis():
+    """Basis for so(3): skew-symmetric 3×3 matrices."""
+    # L_x generates rotation around x-axis
+    L_x = jnp.array([[0, 0, 0], [0, 0, -1], [0, 1, 0]], dtype=float)
+    L_y = jnp.array([[0, 0, 1], [0, 0, 0], [-1, 0, 0]], dtype=float)
+    L_z = jnp.array([[0, -1, 0], [1, 0, 0], [0, 0, 0]], dtype=float)
+    return L_x, L_y, L_z
+
+def hat(omega):
+    """Map vector ω ∈ ℝ³ to skew-symmetric matrix ω̂ ∈ so(3)."""
+    return jnp.array([
+        [0, -omega[2], omega[1]],
+        [omega[2], 0, -omega[0]],
+        [-omega[1], omega[0], 0]
+    ])
+
+def exp_so3(omega):
+    """Exponential map so(3) → SO(3)."""
+    return expm(hat(omega))
+
+# Rotation by angle θ around z-axis
+theta = jnp.pi / 4
+R = exp_so3(jnp.array([0, 0, theta]))
+print(f"Rotation by π/4 around z-axis:\n{R}")
+
+# Verify it's orthogonal with determinant 1
+print(f"RᵀR = I: {jnp.allclose(R.T @ R, jnp.eye(3))}")
+print(f"det(R) = {jnp.linalg.det(R):.4f}")
+```
+
+---
+
+**Week 2: Adjoint and coadjoint representations**
+
+**Why this matters for mechanics:**
+
+When a Lie group G acts on a symplectic manifold, conserved quantities
+live in 𝔤*, the dual of the Lie algebra. Angular momentum is an
+element of 𝔰𝔬(3)*. The momentum map μ: M → 𝔤* packages all these
+conserved quantities together.
+
+To understand momentum maps, you need to know how G acts on its own
+Lie algebra (adjoint) and on the dual (coadjoint).
+
+**The adjoint representation**
+
+G acts on 𝔤 by conjugation: for g ∈ G and ξ ∈ 𝔤,
+
+$$\text{Ad}_g(\xi) = g \xi g^{-1}$$
+
+For matrix groups, this is literal matrix conjugation. Geometrically:
+Ad_g tells you how the Lie algebra "rotates" when you change your
+reference frame by g.
+
+For SO(3): Ad_R(ω̂) = R ω̂ R^T. This rotates the axis of the
+infinitesimal rotation ω.
+
+**The coadjoint representation**
+
+G also acts on 𝔤*, the dual space:
+
+$$\langle \text{Ad}^*_g(\mu), \xi \rangle = \langle \mu,
+\text{Ad}_{g^{-1}}(\xi) \rangle$$
+
+This is the action that matters for mechanics. Angular momentum lives
+in 𝔰𝔬(3)* ≅ ℝ³, and the coadjoint action is how angular momentum
+transforms under rotations.
+
+**The punchline for momentum maps:**
+
+When a Lie group G acts on a symplectic manifold (M, ω) preserving the
+symplectic form, there's (often) a momentum map μ: M → 𝔤*. It
+satisfies:
+
+- μ is equivariant: μ(g · x) = Ad*_g(μ(x))
+- For each ξ ∈ 𝔤, the function μ_ξ(x) = ⟨μ(x), ξ⟩ generates the
+  infinitesimal action of ξ
+
+This is abstract now. It will become concrete in Month 19 when you see
+angular momentum as a momentum map for SO(3) acting on T*ℝ³.
+
+**What you need to remember:**
+
+- Lie group = smooth group. Examples: S¹, SO(3), SE(3), SU(2).
+- Lie algebra 𝔤 = T_eG with bracket. For matrix groups: [A,B] = AB -
+  BA.
+- Exponential map: 𝔤 → G. For matrices: matrix exponential.
+- Adjoint: G acts on 𝔤 by Ad_g(ξ) = gξg⁻¹.
+- Coadjoint: G acts on 𝔤*. This is where momentum lives.
+- Momentum map: μ: M → 𝔤*, equivariant, generates symmetry.
+
+You don't need to master this now. You need to have seen it, so that
+when momentum maps appear in Month 19, you have anchors.
+
+**Read**: Marsden & Ratiu, *Introduction to Mechanics and Symmetry*,
+Chapter 9 (Lie groups) — skim for intuition, don't get lost in proofs.
+
+**Optional**: Stillwell, *Naive Lie Theory* — a gentler introduction
+if you want more.
+
 
 ### Month 15: Lagrangian mechanics and motivation
 
@@ -2236,9 +2474,8 @@ print(f"{{p, p}} = {poisson_bracket(p_func, p_func, n)(z_test):.4f} (expected: 0
 
 ### Month 19: Symmetry and momentum maps
 
-**Primary text: Cannas da Silva, Parts V-VI** **Essential companion:
-Marsden & Ratiu, *Introduction to Mechanics and Symmetry*, Chapters
-1-4**
+**Primary text: Cannas da Silva, Parts V-VI**
+**Essential companion: Marsden & Ratiu, *Introduction to Mechanics and Symmetry*, Chapters 1-4**
 
 Noether's theorem geometrised: continuous symmetries correspond to
 conserved quantities.
@@ -2440,6 +2677,19 @@ You've climbed a long way. Take a few days to rest and reflect.
 
 **Content retrospective**: What was most surprising in this phase? What connections did you not expect? How has your view of physics changed?
 
+**Phase 4 Capstone: The sphere as phase space**
+
+The deepest view so far:
+- The cotangent bundle T*S² is 4-dimensional and symplectic
+- The Hamiltonian H(q,p) = ½g^{ij}p_i p_j generates geodesic flow
+- Verify Hamilton's equations reproduce the geodesic equation
+- The sphere has SO(3) symmetry (rotations). Find the momentum map μ:
+  T*S² → so(3)*
+- This is angular momentum. Verify it's conserved along geodesics
+- Noether: rotation symmetry → angular momentum conservation
+
+*You see*: geodesics as Hamiltonian flow, symmetry as conservation.
+
 ### Phase 4 Content Creation
 
 **Primary deliverable: Talk — "Mechanics IS Geometry" (45 minutes)**
@@ -2521,8 +2771,8 @@ Muniain.
 
 ### Month 21: Vector bundles and the need for connections
 
-**Primary text: Baez & Muniain, Part I (Electromagnetism), Chapters
-1-3** **Companion: Schuller Lectures 21-22**
+**Primary text: Baez & Muniain, Part I (Electromagnetism), Chapters 1-3**
+**Companion: Schuller Lectures 21-22**
 
 Begin with what you know: electromagnetism. See how the familiar
 Maxwell equations point toward bundle structure.
@@ -2651,6 +2901,19 @@ Everything connects.
 **Content retrospective**: How does seeing Riemannian geometry as
 bundle theory change your understanding? What questions remain?
 
+**Phase 5 Capstone: The sphere with structure group**
+
+The full picture:
+- The frame bundle F(S²) is a principal SO(2)-bundle over S²
+- The Levi-Civita connection is a connection on F(S²)
+- Its curvature 2-form encodes Gaussian curvature
+- Parallel transport of frames around a loop: the holonomy is a
+  rotation by the enclosed curvature
+- See how Riemannian geometry is "SO(2) gauge theory" on the frame
+  bundle
+
+*You see*: geometry as gauge theory.
+
 ### Phase 5 Content Creation
 
 **Primary deliverable: Blog series — "Fiber Bundles for Working Programmers" (5 posts)**
@@ -2768,6 +3031,18 @@ Build toward executable science:
 - Structure-preserving numerics
 
 *Deliverable*: Working prototype with documentation.
+
+**Phase 6 Capstone: The sphere in computation**
+
+Bring it full circle:
+- Implement geodesic regression on S²: given points, find the best-fit
+  geodesic
+- Use a Hamiltonian neural network to learn the geodesic flow
+- Compare: does the learned system conserve angular momentum?
+- Reflect: what does "structure-preserving learning" mean for this
+  object you now know so well?
+
+*You see*: geometry informing computation.
 
 ### Phase 6 Content Creation
 
