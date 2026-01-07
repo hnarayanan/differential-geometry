@@ -2866,17 +2866,18 @@ electromagnetic potential A is a connection on a U(1) bundle. The
 Christoffel symbols from Riemannian geometry are a connection on the
 frame bundle. Same concept, different bundles.
 
-**Visual anchor**: Picture the base manifold M as a circle lying flat.
-Above each point p of the circle, imagine a vertical line (a
-1-dimensional vector space). The total space E is the union of all
-these lines — a surface sitting above the circle. If you can "comb"
-all the lines consistently, E looks like a cylinder (the trivial
-bundle). But you might not be able to: if the fibers "twist" as you go
-around, E becomes a Möbius strip. Same base, same fibers, different
-global structure. The tangent bundle TS² is non-trivial for a deeper
-reason: you can't comb a hairy ball flat (every vector field on S² has
-a zero). Baez & Muniain, Chapter 1 has excellent illustrations. Sketch
-both the cylinder and the Möbius strip as bundles over S¹.
+**Visual anchor**: Picture a fiber bundle as a surface E hovering
+above a curve M. A path γ in the base wants to "lift" to a path in E,
+but there are infinitely many lifts — you could wander up and down
+within each fiber. A connection picks out a unique "horizontal" lift:
+at each point of E, it defines which directions are "horizontal"
+(parallel to the base) versus "vertical" (along the fiber). The
+horizontal lift of γ is the unique path in E that projects to γ and
+always moves horizontally. For the frame bundle, horizontal lift is
+parallel transport: you're carrying a frame along γ without rotating
+it relative to the connection. Schuller's Lecture 24 visualises this
+beautifully; sketch a path on the base of a cylinder and its
+horizontal lift on the surface.
 
 **Reference**: Husemoller, Chapters 4-5 for formal treatment.
 
