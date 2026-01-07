@@ -74,6 +74,25 @@ Rather than sequential topics, four strands develop in parallel:
 Every month touches at least three strands. Some weeks emphasise one;
 the weave is the point.
 
+### A typical week
+
+A sustainable pace for 30 months requires rhythm. Here's a template
+for a 10-12 hour week:
+
+- **3-4 reading sessions** (1-1.5 hours each): Primary text, work
+  through proofs with pencil in hand
+- **2 problem sessions** (1-1.5 hours each): Exercises from the text,
+  struggle productively
+- **1 coding session** (1.5-2 hours): Implement the week's concepts in
+  JAX
+- **1 synthesis session** (1 hour): Write notes, update content
+  drafts, reflect on connections
+
+This cadence is a guide, not a mandate. Some weeks will be heavier on
+reading; others will be dominated by a single hard problem. The rhythm
+matters more than the precise allocation. Fifteen minutes on a hard
+day beats zero minutes.
+
 ### Spiral returns
 
 At the end of each major phase, you return to earlier material with
@@ -97,7 +116,7 @@ Each phase produces specific deliverables:
 | Phase | Primary content | Secondary content |
 |-------|-----------------|-------------------|
 | 1 | Video: "Why You Can't Flatten a Sphere" | Blog: Implementing Frenet-Serret |
-| 2 | Video: "Automatic Differentiation IS Differential Geometry" | FPC session: Forms and integration |
+| 2 | Video: "Automatic Differentiation IS Differential Geometry" | First Principles Club (FPC) session: Forms and integration |
 | 3 | Interactive: Parallel transport visualiser | Blog: The geometry behind general relativity |
 | 4 | Talk: "Mechanics IS Geometry" | Video series: Building symplectic integrators |
 | 5 | Blog series: "Fiber Bundles for Programmers" | FPC session: From Maxwell to Yang-Mills |
@@ -220,9 +239,8 @@ Simon Rea's notes: https://github.com/lazierthanthou/Lecture_Notes_GR
 
 Twenty-eight lectures of ~90 minutes each. Schuller builds from logic
 and set theory through fiber bundles and Yang-Mills. Mathematical
-precision exceeding most textbooks, yet remarkably clear. Won
-Germany's 2016 National Teaching Prize. Perfect for transcription
-practice.
+precision exceeding most textbooks, yet remarkably clear. Won a
+prestigious German teaching award. Perfect for transcription practice.
 
 *Engagement level: Transcribe selected lectures (schedule below)*
 
@@ -241,10 +259,10 @@ opposite sign. If your calculation differs by a sign, check
 conventions first.
 
 **Christoffel symbols**: Γ^i_{jk} denotes the components of ∇_{∂_j}∂_k
-= Γ^i_{jk} ∂_i. The upper index is the output direction; the lower
-indices are the input vector field and differentiation direction.
+= Γ^i_{jk} ∂_i. Reading the indices: i is the output component, j is
+the differentiation direction, k is the input field.
 
-**Symplectic form**: We use ω = Σ dp_i ∧ dq^i on cotangent bundles,
+**Symplectic form**: We use ω = Σ dq^i ∧ dp_i on cotangent bundles,
 with coordinates ordered (q¹,...,qⁿ,p₁,...,pₙ). The matrix
 representation is J = [[0, I], [-I, 0]].
 
@@ -446,29 +464,24 @@ everything.
 import jax
 import jax.numpy as jnp
 
-def frenet_serret(curve, t, eps=1e-5):
+def frenet_serret(curve, t):
     """
-    Compute Frenet-Serret frame for a parametric curve.
+    Compute Frenet-Serret frame for a parametric curve using autodiff.
 
     Args:
-        curve: function t → ℝ³
+        curve: function t → ℝ³ (must be JAX-compatible)
         t: parameter value
-        eps: step size for numerical derivatives
 
     Returns:
         T, N, B: unit tangent, normal, binormal
         kappa: curvature
         tau: torsion
     """
-    # First derivative (velocity)
+    # Derivatives via JAX autodiff
     r = curve(t)
-    dr = (curve(t + eps) - curve(t - eps)) / (2 * eps)
-
-    # Second derivative (acceleration)
-    ddr = (curve(t + eps) - 2*r + curve(t - eps)) / eps**2
-
-    # Third derivative (for torsion)
-    dddr = (curve(t + 2*eps) - 2*curve(t + eps) + 2*curve(t - eps) - curve(t - 2*eps)) / (2 * eps**3)
+    dr = jax.jacfwd(curve)(t)      # First derivative (velocity)
+    ddr = jax.jacfwd(jax.jacfwd(curve))(t)   # Second derivative
+    dddr = jax.jacfwd(jax.jacfwd(jax.jacfwd(curve)))(t)  # Third derivative
 
     # Speed and unit tangent
     speed = jnp.linalg.norm(dr)
@@ -476,17 +489,22 @@ def frenet_serret(curve, t, eps=1e-5):
 
     # Curvature: κ = |dr × ddr| / |dr|³
     cross = jnp.cross(dr, ddr)
-    kappa = jnp.linalg.norm(cross) / speed**3
+    cross_norm = jnp.linalg.norm(cross)
+    kappa = cross_norm / speed**3
+
+    # Handle inflection points (κ ≈ 0) gracefully
+    safe_cross_norm = jnp.maximum(cross_norm, 1e-10)
 
     # Principal normal (direction of curvature)
-    dT_unnorm = ddr/speed - jnp.dot(ddr, T) * T / speed
-    N = dT_unnorm / jnp.linalg.norm(dT_unnorm)
+    # N = (dr × ddr) × dr / |...| when κ ≠ 0
+    dT_unnorm = ddr / speed - jnp.dot(ddr, T) * T / speed
+    N = dT_unnorm / jnp.linalg.norm(dT_unnorm + 1e-10)
 
     # Binormal
     B = jnp.cross(T, N)
 
     # Torsion: τ = (dr × ddr) · dddr / |dr × ddr|²
-    tau = jnp.dot(cross, dddr) / jnp.dot(cross, cross)
+    tau = jnp.dot(cross, dddr) / (safe_cross_norm**2)
 
     return T, N, B, kappa, tau
 
@@ -767,65 +785,52 @@ work through the calculation, perhaps with computer assistance.
 **Computation**: Verify Theorema Egregium by computing K two ways.
 
 ```python
-def gaussian_curvature_extrinsic(surface, u, v):
-    """Compute K from the embedding (shape operator)."""
-    K, _, _, _ = surface_curvatures(surface, u, v)
-    return K
-
-
-def gaussian_curvature_intrinsic(surface, u, v, eps=1e-4):
+def gaussian_curvature_intrinsic(surface, u, v):
     """
-    Compute K purely from the metric (first fundamental form).
+    Compute K purely from the metric (first fundamental form) using autodiff.
     This demonstrates the Theorema Egregium: K depends only on E, F, G
     and their derivatives — no reference to the embedding.
 
-    Uses the Brioschi formula for Gaussian curvature.
+    Uses the Brioschi formula for Gaussian curvature with JAX derivatives.
     """
-    def metric_coeffs(u, v):
-        def surf(uv):
-            return surface(uv[0], uv[1])
+    def metric_coeffs(uv):
+        """Return (E, F, G) as a function of (u, v) for differentiation."""
+        u, v = uv[0], uv[1]
+        def surf(uv_inner):
+            return surface(uv_inner[0], uv_inner[1])
         J = jax.jacfwd(surf)(jnp.array([u, v]))
         Su, Sv = J[:, 0], J[:, 1]
         E = jnp.dot(Su, Su)
         F = jnp.dot(Su, Sv)
         G = jnp.dot(Sv, Sv)
-        return E, F, G
+        return jnp.array([E, F, G])
 
-    E, F, G = metric_coeffs(u, v)
+    uv = jnp.array([u, v])
+    EFG = metric_coeffs(uv)
+    E, F, G = EFG[0], EFG[1], EFG[2]
 
-    # Partial derivatives of metric coefficients (numerical)
-    E_u = (metric_coeffs(u + eps, v)[0] - metric_coeffs(u - eps, v)[0]) / (2 * eps)
-    E_v = (metric_coeffs(u, v + eps)[0] - metric_coeffs(u, v - eps)[0]) / (2 * eps)
-    F_u = (metric_coeffs(u + eps, v)[1] - metric_coeffs(u - eps, v)[1]) / (2 * eps)
-    F_v = (metric_coeffs(u, v + eps)[1] - metric_coeffs(u, v - eps)[1]) / (2 * eps)
-    G_u = (metric_coeffs(u + eps, v)[2] - metric_coeffs(u - eps, v)[2]) / (2 * eps)
-    G_v = (metric_coeffs(u, v + eps)[2] - metric_coeffs(u, v - eps)[2]) / (2 * eps)
+    # First derivatives via autodiff
+    d_EFG = jax.jacfwd(metric_coeffs)(uv)  # Shape (3, 2): d(E,F,G)/d(u,v)
+    E_u, E_v = d_EFG[0, 0], d_EFG[0, 1]
+    F_u, F_v = d_EFG[1, 0], d_EFG[1, 1]
+    G_u, G_v = d_EFG[2, 0], d_EFG[2, 1]
 
-    # Second derivatives
-    E_vv = (metric_coeffs(u, v + eps)[0] - 2*E + metric_coeffs(u, v - eps)[0]) / eps**2
-    G_uu = (metric_coeffs(u + eps, v)[2] - 2*G + metric_coeffs(u - eps, v)[2]) / eps**2
-    F_uv = (metric_coeffs(u + eps, v + eps)[1] - metric_coeffs(u + eps, v - eps)[1]
-            - metric_coeffs(u - eps, v + eps)[1] + metric_coeffs(u - eps, v - eps)[1]) / (4 * eps**2)
+    # Second derivatives via autodiff
+    dd_EFG = jax.jacfwd(jax.jacfwd(metric_coeffs))(uv)  # Shape (3, 2, 2)
+    E_vv = dd_EFG[0, 1, 1]
+    G_uu = dd_EFG[2, 0, 0]
+    F_uv = dd_EFG[1, 0, 1]
 
     # Brioschi formula for K
     W = E * G - F**2
 
-    K = (
-        -0.5 * E_vv - F_uv + 0.5 * G_uu
-        + (0.25 / W) * (E_u * (E_v * G - 2 * F * F_v + F_u * G)
-                       + E_v * (E_u * G - 2 * E * G_u + 2 * F * F_u - E_v * F)
-                       + G_u * (E * G_u - E_u * F)
-                       + G_v * (E * F_v - 0.5 * E_v * F - 0.5 * E * G_u))
-    ) / W
-
-    # Simplified standard formula
-    K_simple = (2 * F_uv - E_vv - G_uu) / (2 * W) + (
+    K = (2 * F_uv - E_vv - G_uu) / (2 * W) + (
         (E_v * G_v - 2 * F_u * G_v + G_u**2) * E +
         (E_u * G_v - E_v * G_u) * F +
         (E_u * G_u - 2 * E_v * F_u + E_v**2) * G
     ) / (4 * W**2)
 
-    return K_simple
+    return K
 
 
 # Verify Theorema Egregium
@@ -842,7 +847,7 @@ for name, surf, u, v in [
     print(f"{name}:")
     print(f"  Extrinsic K = {K_ext:.4f}")
     print(f"  Intrinsic K = {K_int:.4f}")
-    print(f"  Agreement: {jnp.abs(K_ext - K_int) < 0.1}\n")
+    print(f"  Agreement: {jnp.allclose(K_ext, K_int, rtol=1e-3)}\n")
 ```
 
 ### Celebrating Phase 1
@@ -1361,6 +1366,15 @@ dimensions.
 - H^k_{dR}(M) = {closed k-forms} / {exact k-forms}
 - What cohomology measures: "k-dimensional holes"
 - H^0(M) = ℝ^{#components}, H^1(S¹) = ℝ, H^2(S²) = ℝ
+
+*The topological intuition*: If you've seen algebraic topology,
+cohomology is the dual picture to homology. Homology counts holes
+(cycles that don't bound); cohomology counts the differential forms
+that "get stuck" on those holes (closed forms that aren't exact). The
+torus has two independent 1-dimensional holes (around and through), so
+H¹(T²) = ℝ². You don't need algebraic topology to proceed — de Rham
+cohomology stands on its own — but if the "hole-counting" intuition
+helps, use it.
 
 *Key insight*: Stokes' theorem says that d and ∂ are adjoint operators
 in a precise sense. Integration pairs forms with chains (oriented
@@ -2382,8 +2396,8 @@ print(f"\nPosition subspace is Lagrangian: {is_lagrangian_subspace(position_subs
 
 **Week 3-4: Darboux's theorem**
 - **Statement**: Around any point of a symplectic manifold, there
-  exist local coordinates (q¹,...,qⁿ,p₁,...,pₙ) such that ω = Σ dp_i ∧
-  dq^i
+  exist local coordinates (q¹,...,qⁿ,p₁,...,pₙ) such that ω = Σ dq^i ∧
+  dp_i
 - **Consequence**: All symplectic manifolds of the same dimension are
   locally identical
 - **Contrast with Riemannian**: Riemannian manifolds have local
