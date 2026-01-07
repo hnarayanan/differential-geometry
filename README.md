@@ -2503,96 +2503,133 @@ Before proceeding, verify you can:
 
 *Goal: Master the structural framework underlying modern geometry and gauge theory.*
 
-### Month 21: Vector bundles
+### Primary text for this phase
 
-**Primary text: Husemoller, *Fibre Bundles*, Chapters 1-5 (selected)**
-**Companion: Schuller Lectures 21-22**
+**John Baez & Javier Muniain, *Gauge Fields, Knots and Gravity***
+(World Scientific, 1994)
 
-The tangent bundle is the prototype: a vector space attached to each point, varying smoothly.
+This book was written for exactly your profile: physicists who want
+mathematical precision, mathematicians who want physical intuition,
+and anyone who wants to compute. It builds bundles and connections
+from the ground up, with Maxwell and Yang-Mills as the guiding
+examples. The exposition is clear, the examples are concrete, and the
+perspective is modern.
 
-**Week 1-2: Definitions and examples**
+Use **Husemoller, *Fibre Bundles*** as a reference for formal
+definitions and proofs when you need more rigor. But learn from Baez &
+Muniain.
+
+### Month 21: Vector bundles and the need for connections
+
+**Primary text: Baez & Muniain, Part I (Electromagnetism), Chapters
+1-3** **Companion: Schuller Lectures 21-22**
+
+Begin with what you know: electromagnetism. See how the familiar
+Maxwell equations point toward bundle structure.
+
+**Week 1-2: Review and reframe**
+- Maxwell's equations in differential form language
+- The vector potential A and gauge transformations A → A + dλ
+- Why gauge freedom suggests bundle structure
+
+**Week 3-4: Vector bundles**
 - Vector bundle: (E, π, M) where π: E → M with vector space fibers
 - Sections: smooth maps s: M → E with π ∘ s = id_M
-- Local trivialisations: E|_U ≅ U × V
-- Transition functions
+- The tangent and cotangent bundles as examples
+- Transition functions and how bundles can be "twisted"
 
-**Week 3-4: The tangent and cotangent bundles**
-- TM and T*M as vector bundles
-- Vector fields as sections of TM
-- Differential forms as sections of ∧*T*M
-- Riemannian metrics as sections of Sym²(T*M)
+*Key insight*: The gauge freedom in electromagnetism isn't a bug —
+it's a feature. It tells us the electromagnetic potential isn't a
+function but a section of a bundle. Different gauge choices are
+different local trivialisations of the same geometric object.
 
-*Key insight*: Many geometric objects are naturally sections of vector
-bundles. The bundle formalism unifies them and reveals common
-structure.
+**Reference**: Husemoller, Chapters 1-3 for formal definitions.
 
 **Transcribe**: Schuller Lectures 21-22 (Fiber bundles).
 
-### Month 22: Principal bundles
+### Month 22: Principal bundles and connections
 
-**Primary text: Husemoller, Chapters 6-8**
-**Companion: Schuller Lectures 23-24**
+**Primary text: Baez & Muniain, Part I (Electromagnetism), Chapters 4-5**
+**Companion: Schuller Lectures 23-25**
 
-Principal bundles encode symmetry. The structure group G acts on each fiber.
+**Week 1-2: Principal bundles**
+- Principal G-bundle: P → M with free, transitive G-action on fibers
+- The frame bundle F(M) as the prototype
+- Associated bundles: how vector bundles arise from principal bundles
+- Gauge transformations as bundle automorphisms
 
-**Week 1-2: Principal G-bundles**
-- Definition: P → M with free, transitive G-action on fibers
-- Examples: frame bundle F(M), unit tangent bundle
-- Gauge transformations: bundle automorphisms
+**Week 3-4: Connections**
+- The problem: how to compare vectors (or group elements) at different
+  points
+- Connections as "horizontal subspaces" — a rule for lifting paths
+- Connection 1-forms
+- Parallel transport in bundles
 
-**Week 3-4: Associated bundles**
-- Given principal bundle P and representation ρ: G → GL(V), form P ×_ρ V
-- TM is associated to the frame bundle via standard representation
-- This is the proper framework for "tensors"
+*Key insight*: A connection tells you how to move through the total
+space "horizontally" — staying parallel to the base. The
+electromagnetic potential A is a connection on a U(1) bundle. The
+Christoffel symbols from Riemannian geometry are a connection on the
+frame bundle. Same concept, different bundles.
 
-*Key insight*: Principal bundles are the "universal" bundles — all
-vector bundles with structure group G arise as associated bundles.
-This explains why gauge transformations act the way they do.
+**Reference**: Husemoller, Chapters 4-5 for formal treatment.
 
-### Month 23: Connections
+**Transcribe**: Schuller Lectures 23-25.
 
-**Primary text: Husemoller, Chapter 9**
-**Companion: Schuller Lectures 24-25, Frankel Chapters 15-16**
+### Month 23: Curvature and gauge theory
 
-Connections tell you how to move between fibers.
+**Primary text: Baez & Muniain, Part I (Electromagnetism), Chapters
+6-7 and Part III (Gravity), selected**
+**Companion: Frankel, Chapters 15-17**
 
-**Week 1-2: Connections on principal bundles**
-- Ehresmann connection: splitting TP = H ⊕ V into horizontal and vertical
-- Connection 1-form ω ∈ Ω¹(P, 𝔤) with ω(ξ̃) = ξ for ξ ∈ 𝔤
-- Horizontal lift of curves
-
-**Week 3-4: Curvature of connections**
+**Week 1-2: Curvature of connections**
+- Curvature as the failure of parallel transport to close around loops
 - Curvature 2-form: Ω = dω + ½[ω, ω]
 - Flat connections: Ω = 0
-- Holonomy: failure of horizontal transport to close
+- Holonomy: the group element acquired by transport around a loop
+
+**Week 3-4: Electromagnetism as geometry**
+- The electromagnetic field F = dA is curvature of a U(1) connection
+- Maxwell's equations: dF = 0 (Bianchi identity), d*F = J (field
+  equation)
+- Gauge transformations as changes of local trivialisation
+- The Aharonov-Bohm effect: holonomy has physical consequences
+
+*Key insight*: Maxwell's equations are not physics imposed on geometry
+— they *are* geometry. dF = 0 is the Bianchi identity, true for any
+curvature. d*F = J is the dynamical equation. Electromagnetism is the
+simplest gauge theory.
+
+**Reference**: Husemoller, Chapter 9 for connections in full
+generality.
+
+### Month 24: Non-abelian gauge theory and synthesis
+
+**Primary text: Baez & Muniain, Part II (Gauge Fields)**
+**Companion: Frankel, Chapters 17-18**
+
+**Week 1-2: Yang-Mills theory**
+- Non-abelian gauge groups: SU(2), SU(3)
+- The Yang-Mills equations
+- The Standard Model as a gauge theory (overview)
+
+**Week 3-4: Characteristic classes (overview) and synthesis**
+- Chern-Weil theory: building topological invariants from curvature
+- Chern-Simons theory: the bridge to knot theory (optional preview)
+- Chern classes, Pontryagin classes
+- The Euler class and Gauss-Bonnet revisited
+- How Riemannian geometry fits: the Levi-Civita connection on the
+  frame bundle
 
 *Key insight*: The Levi-Civita connection from Phase 3 is a connection
-on the frame bundle. Its curvature is the Riemann curvature tensor.
-All Riemannian geometry fits into this framework.
-
-**Transcribe**: Schuller Lectures 24-26.
-
-### Month 24: Gauge theory and synthesis
-
-**Primary text: Frankel, Chapters 17-18**
-**Companion: Baez & Muniain, *Gauge Fields, Knots and Gravity* (for intuition)**
-
-**Week 1-2: Gauge theory**
-- Electromagnetic field as curvature of U(1) bundle
-- Maxwell's equations: dF = 0 (Bianchi), d*F = J
-- Non-abelian gauge theories: SU(2), SU(3)
-
-**Week 3-4: Characteristic classes (overview)**
-- Chern-Weil theory: topological invariants from curvature
-- Chern classes, Pontryagin classes
-- The Euler class and Gauss-Bonnet
-
-*Key insight*: Electromagnetism is not physics + geometry; it *is*
-geometry. The electromagnetic field F is the curvature of a connection
-on a U(1) bundle. Maxwell's equations are geometric identities.
+on the frame bundle F(M). Its curvature is the Riemann curvature
+tensor. Riemannian geometry is gauge theory with structure group GL(n)
+reduced to O(n). Everything connects.
 
 **Note**: Characteristic classes deserve deeper study than this
-overview. Flagged for post-curriculum exploration.
+overview provides. Flagged for post-curriculum exploration.
+
+**Reference**: Husemoller, Chapters 6-8 for principal bundles, Chapter
+9 for connections.
 
 ### Celebrating Phase 5
 
