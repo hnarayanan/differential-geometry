@@ -426,6 +426,18 @@ moves with the curve. The equations describe how this frame rotates as
 you traverse the curve. Curvature measures rotation toward N; torsion
 measures rotation toward B.
 
+**Visual anchor**: Picture an orthonormal frame {T, N, B} rigidly
+attached to a bead sliding along a wire. As the bead moves, the frame
+rotates: T always points forward along the curve, N points toward the
+center of the "osculating circle" (the best-fit circle at that
+instant), and B = T × N completes the right-hand system. The
+Frenet-Serret equations quantify how fast this frame rotates: κ
+measures rotation from T toward N; τ measures rotation from N toward
+B. For a helix, both rotations are constant. For a plane curve, τ = 0
+and the frame never twists out of the plane. Sketch the frame at
+several points along a helix — this single picture will anchor
+everything.
+
 **Exercises**: Do Carmo Chapter 1, problems 1-5, 7, 9, 12, 15.
 
 **Computation**: Implement Frenet-Serret numerically.
@@ -1128,6 +1140,17 @@ the family of all solutions.
 along X for ε, then back along Y for ε. You don't return to where you
 started. The discrepancy is approximately ε²[X, Y]. The Lie bracket
 captures this infinitesimal non-commutativity.
+
+**Visual anchor**: Draw two vector fields X and Y on a small patch of
+the plane. From a point p, flow along X for small time ε to reach
+point a. From a, flow along Y for time ε to reach b. Now go back: from
+p, flow along Y first to reach c, then along X to reach d. If X and Y
+were coordinate vector fields (∂/∂x and ∂/∂y), you'd have b = d — a
+closed parallelogram. For general vector fields, b ≠ d. The gap
+between them is approximately ε²[X,Y]. The Lie bracket measures how
+much the parallelogram fails to close. Arnold's *Mathematical Methods
+of Classical Mechanics*, §34, has the canonical figure. Sketch it
+yourself for X = ∂/∂x and Y = x·∂/∂y on ℝ².
 
 **Computation**: Visualise flows and compute Lie brackets.
 
@@ -2359,6 +2382,16 @@ geometry has no local structure. Every 2n-dimensional symplectic
 manifold looks locally like T*ℝⁿ. All the interesting structure is
 global.
 
+**Visual anchor**: In the (q, p) phase plane, draw a blob of initial
+conditions — say, a small disk. Now evolve every point in the blob
+under Hamiltonian flow for some time t. The blob deforms: it might
+stretch, rotate, or develop tendrils. But its area remains exactly
+constant. This is Liouville's theorem, and it's a consequence of the
+symplectic structure. For the harmonic oscillator, the blob rotates
+rigidly. For more complex systems, it stretches dramatically while
+preserving area — this is the visual origin of chaos. Sketch phase
+portraits for H = ½(p² + q²) and H = ½p² - ¼q⁴ to see the contrast.
+
 **Exercises**: Cannas da Silva exercises for Parts II-III.
 
 ### Month 18: Hamiltonian mechanics as geometry
@@ -2793,6 +2826,18 @@ it's a feature. It tells us the electromagnetic potential isn't a
 function but a section of a bundle. Different gauge choices are
 different local trivialisations of the same geometric object.
 
+**Visual anchor**: Picture the base manifold M as a circle lying flat.
+Above each point p of the circle, imagine a vertical line (a
+1-dimensional vector space). The total space E is the union of all
+these lines — a surface sitting above the circle. If you can "comb"
+all the lines consistently, E looks like a cylinder (the trivial
+bundle). But you might not be able to: if the fibers "twist" as you go
+around, E becomes a Möbius strip. Same base, same fibers, different
+global structure. The tangent bundle TS² is non-trivial for a deeper
+reason: you can't comb a hairy ball flat (every vector field on S² has
+a zero). Baez & Muniain, Chapter 1 has excellent illustrations. Sketch
+both the cylinder and the Möbius strip as bundles over S¹.
+
 **Reference**: Husemoller, Chapters 1-3 for formal definitions.
 
 **Transcribe**: Schuller Lectures 21-22 (Fiber bundles).
@@ -2821,6 +2866,18 @@ electromagnetic potential A is a connection on a U(1) bundle. The
 Christoffel symbols from Riemannian geometry are a connection on the
 frame bundle. Same concept, different bundles.
 
+**Visual anchor**: Picture the base manifold M as a circle lying flat.
+Above each point p of the circle, imagine a vertical line (a
+1-dimensional vector space). The total space E is the union of all
+these lines — a surface sitting above the circle. If you can "comb"
+all the lines consistently, E looks like a cylinder (the trivial
+bundle). But you might not be able to: if the fibers "twist" as you go
+around, E becomes a Möbius strip. Same base, same fibers, different
+global structure. The tangent bundle TS² is non-trivial for a deeper
+reason: you can't comb a hairy ball flat (every vector field on S² has
+a zero). Baez & Muniain, Chapter 1 has excellent illustrations. Sketch
+both the cylinder and the Möbius strip as bundles over S¹.
+
 **Reference**: Husemoller, Chapters 4-5 for formal treatment.
 
 **Transcribe**: Schuller Lectures 23-25.
@@ -2848,6 +2905,19 @@ frame bundle. Same concept, different bundles.
 — they *are* geometry. dF = 0 is the Bianchi identity, true for any
 curvature. d*F = J is the dynamical equation. Electromagnetism is the
 simplest gauge theory.
+
+**Visual anchor**: On a sphere, parallel transport a tangent vector
+around a closed triangle (three geodesic segments). When you return to
+the starting point, the vector has rotated — even though you never
+"twisted" it locally. This rotation angle is the holonomy, and it
+equals the integral of curvature over the enclosed region. For a
+sphere with K = 1, a triangle enclosing area A gives holonomy angle A
+(in radians). This is the geometric phase: global information (you
+went around a loop) manifests as local change (the vector rotated). In
+electromagnetism, the Aharonov-Bohm effect is exactly this — an
+electron's phase shifts when its path encloses magnetic flux, even if
+it never touches the field. Your parallel transport visualiser from
+Phase 3 already shows this; revisit it now with bundle language.
 
 **Reference**: Husemoller, Chapter 9 for connections in full
 generality.
