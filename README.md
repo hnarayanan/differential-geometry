@@ -2208,6 +2208,19 @@ Chapter 9 (Lie groups) — skim for intuition, don't get lost in proofs.
 **Optional**: Stillwell, *Naive Lie Theory* — a gentler introduction
 if you want more.
 
+**Where Lie groups return**: This prelude gives you anchors. Lie
+groups will reappear throughout:
+- Phase 4, Months 19-20: Momentum maps package symmetry → conservation
+- Phase 5: Gauge groups (U(1), SU(2), SU(3)) are Lie groups; gauge
+  transformations are their action
+- Phase 6: Equivariant neural networks are built on representations of
+  Lie groups
+
+By the end of the curriculum, you'll have used Lie groups in three
+different ways: as symmetries generating conservation laws, as
+structure groups of bundles, and as the algebraic foundation of
+equivariant learning. The theory runs deeper — see "Branches not
+taken" for where to continue.
 
 ### Month 15: Lagrangian mechanics and motivation
 
@@ -3024,6 +3037,54 @@ Before proceeding, verify you can:
 
 ---
 
+### Prelude to Phase 6: From bundles to learning
+
+**Duration: 1 week**
+
+Before entering computational geometry and geometric ML, pause to see
+why everything you've learned matters for modern machine learning.
+
+**The core insight**: A neural network layer is a map between feature
+spaces. If those feature spaces have symmetry — if rotating the input
+should rotate the output in a predictable way — then the layer must
+respect that structure. This is equivariance, and it's fiber bundle
+thinking in disguise.
+
+**The translation dictionary**:
+
+| Differential geometry | Geometric deep learning |
+|-----------------------|------------------------|
+| Lie group G | Symmetry group (rotations, translations, permutations) |
+| Representation of G on V | How G acts on feature vectors |
+| Principal bundle P → M | Frame bundle over input space |
+| Associated bundle P ×_G V | Feature bundle (features that transform under G) |
+| Section of bundle | Feature map (assignment of features to points) |
+| Connection | Way of comparing features at different points |
+| Equivariant map | Layer that respects the symmetry |
+
+The Lie groups from the Phase 4 prelude — SO(3), SE(3), SU(2) — are
+exactly the symmetry groups that matter for physical systems. The
+representation theory you glimpsed (adjoint, coadjoint) is what
+determines how features can transform.
+
+**Why this matters for Contravariant Systems**: Structure-preserving
+computation requires knowing what structure to preserve. The bundle
+language gives you a vocabulary for specifying symmetries, and
+equivariant architectures are the computational implementation of that
+specification.
+
+**The discretization question**: Differential geometry lives on smooth
+manifolds. Computation lives on finite meshes and discrete graphs.
+Discrete exterior calculus bridges this gap — it's the theory of how
+differential-geometric structures survive discretization. This is why
+Month 29 exists.
+
+You don't need to master this prelude. You need to see that Phase 6
+isn't a departure from Phases 1-5 — it's their computational
+fulfillment.
+
+---
+
 ## Phase 6: Computational geometry and geometric ML
 
 **Duration: 6 months (Months 25-30)**
@@ -3146,8 +3207,30 @@ richer structures. Reference: Hatcher, *Algebraic Topology*.
 Many symplectic manifolds are Kähler. Reference: Huybrechts, *Complex
 Geometry*.
 
-**Characteristic classes**: Treated only in overview. Reference:
-Milnor & Stasheff, *Characteristic Classes*.
+**Lie theory in depth**: The Lie groups on-ramp in Phase 4 gives the
+minimum needed for momentum maps. But Lie theory is vast: the
+classification of simple Lie algebras, representation theory, the
+structure of compact groups, symmetric spaces. If you pursue geometric
+deep learning seriously, you'll need representation theory (how groups
+act on vector spaces). If you pursue geometric mechanics, you'll need
+coadjoint orbits and the Kirillov correspondence. The standard
+reference is Knapp, *Lie Groups Beyond an Introduction*. For
+representation theory specifically: Fulton & Harris, *Representation
+Theory: A First Course*.
+
+**Characteristic classes**: The curriculum gives only an overview in
+Month 24. This is a significant gap. Characteristic classes are
+topological invariants built from curvature — they detect when bundles
+are "twisted" in ways that can't be untwisted. The Euler class
+generalizes Gauss-Bonnet; the Chern classes are essential for complex
+geometry; the Pontryagin classes matter for real bundles and appear in
+physics (anomalies, index theorems). Chern-Weil theory shows how to
+compute these classes from connections — the same connections you
+studied in Phase 5. If you pursue gauge theory, string theory, or
+topological data analysis, you will need this material. Reference:
+Milnor & Stasheff, *Characteristic Classes* — dense but definitive.
+For a gentler path: Bott & Tu, *Differential Forms in Algebraic
+Topology*, Part III.
 
 **Index theory**: The Atiyah-Singer index theorem — analysis,
 geometry, topology unified.
