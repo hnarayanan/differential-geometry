@@ -877,6 +877,7 @@ Spend one week consolidating. This is not optional.
 
 **Synthesis exercise**: Take a surface you know well (say, the torus).
 Work through every concept:
+
 - Parametrise it explicitly
 - Compute E, F, G at a generic point
 - Compute the Gaussian and mean curvature
@@ -941,6 +942,7 @@ JAX"**
 *Time budget: 1 week*
 
 A technical walkthrough of your curve computations:
+
 - The mathematical theory (clear, self-contained)
 - The implementation (clean, documented code)
 - Visualisations (moving frame along various curves)
@@ -1515,6 +1517,7 @@ Holes with Calculus"**
 *Time budget: 1 week*
 
 Explain cohomology to a programmer:
+
 - The setup: closed forms, exact forms, the quotient
 - Why closed ≠ exact on the circle (wind around and integrate)
 - Simple examples: H^1(S¹) = ℝ, H^2(S²) = ℝ, H^1(T²) = ℝ²
@@ -1982,6 +1985,7 @@ Pause. Look back at how far you've come from curves and surfaces.
 **Preview symplectic geometry:**
 
 The geodesic flow on T*M is Hamiltonian! Here's the setup:
+
 - Phase space: T*M (cotangent bundle)
 - Hamiltonian: H(q, p) = ½g^{ij}(q)p_i p_j (kinetic energy)
 - Hamilton's equations recover the geodesic equation
@@ -2033,6 +2037,7 @@ Relativity"**
 *Time budget: 2 weeks*
 
 For someone who learned GR from physics textbooks, explain:
+
 - What Christoffel symbols really are: components of the Levi-Civita
   connection
 - What the Riemann tensor really measures: parallel transport around
@@ -2264,6 +2269,7 @@ if you want more.
 
 **Where Lie groups return**: This prelude gives you anchors. Lie
 groups will reappear throughout:
+
 - Phase 4, Months 19-20: Momentum maps package symmetry → conservation
 - Phase 5: Gauge groups (U(1), SU(2), SU(3)) are Lie groups; gauge
   transformations are their action
@@ -2361,6 +2367,7 @@ mechanics.
 
 **Definition (symplectic manifold)**: A symplectic manifold is a pair
 (M, ω) where M is a smooth manifold and ω ∈ Ω²(M) is a 2-form that is:
+
 - Closed: dω = 0
 - Non-degenerate: ω_p: T_pM × T_pM → ℝ is non-degenerate at each p
 
@@ -2640,10 +2647,12 @@ the geometry.
 For separable Hamiltonians H(q, p) = T(p) + V(q):
 
 **Symplectic Euler**:
+
 - p_{n+1} = p_n - Δt · ∇V(q_n)
 - q_{n+1} = q_n + Δt · ∇T(p_{n+1})
 
 **Leapfrog (Störmer-Verlet)**:
+
 - p_{n+1/2} = p_n - (Δt/2) · ∇V(q_n)
 - q_{n+1} = q_n + Δt · ∇T(p_{n+1/2})
 - p_{n+1} = p_{n+1/2} - (Δt/2) · ∇V(q_{n+1})
@@ -3219,6 +3228,7 @@ Choose one substantial project:
 **Option A: Geometric Mechanics Library**
 
 Build a JAX library:
+
 - Symplectic manifolds (cotangent bundles, coadjoint orbits)
 - Hamiltonian systems with autodiff
 - Momentum maps and reduction
@@ -3229,6 +3239,7 @@ Build a JAX library:
 **Option B: Structure-Preserving Neural Dynamics**
 
 Research project:
+
 - Novel architecture with geometric priors
 - Comparison across physical systems
 - Analysis of preserved structures
@@ -3238,6 +3249,7 @@ Research project:
 **Option C: Contravariant Systems Prototype**
 
 Build toward executable science:
+
 - Symbolic geometric structures
 - Automatic equation derivation
 - JAX integration
