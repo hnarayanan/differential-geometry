@@ -233,9 +233,8 @@ treatment of the intrinsic geometry of surfaces is unmatched. Volume 2
 **Frederic Schuller, *Lectures on the Geometrical Anatomy of
 Theoretical Physics***
 
-Video lectures:
-https://www.youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic
-Simon Rea's notes: https://github.com/lazierthanthou/Lecture_Notes_GR
+- [Video lectures](https://www.youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic)
+- [Simon Rea's notes](https://github.com/lazierthanthou/Lecture_Notes_GR)
 
 Twenty-eight lectures of ~90 minutes each. Schuller builds from logic
 and set theory through fiber bundles and Yang-Mills. Mathematical
@@ -310,6 +309,7 @@ self — honest assessment now prevents frustration later.
 Work through these without references. Be honest about gaps.
 
 **Linear algebra:**
+
 1. What is the rank of a linear map? Prove rank-nullity.
 2. Diagonalise a 3×3 symmetric matrix. What guarantees real
    eigenvalues?
@@ -317,6 +317,7 @@ Work through these without references. Be honest about gaps.
 4. What is a bilinear form? When is it non-degenerate?
 
 **Analysis:**
+
 5. Define continuity using ε-δ. Define it using open sets.
 6. State and prove the inverse function theorem (or at least state it
    precisely).
@@ -325,11 +326,13 @@ Work through these without references. Be honest about gaps.
    its type?
 
 **Topology (light):**
+
 9. What is a topological space? What are open sets?
 10. Define compactness. Prove that [0,1] is compact.
 11. Define connectedness. Is ℝ \ {0} connected?
 
 **Self-assessment:**
+
 - If linear algebra is shaky: Work through **Axler, *Linear Algebra
   Done Right*** (3-4 weeks)
 - If analysis is shaky: Work through **Abbott, *Understanding
@@ -439,7 +442,7 @@ from an interval into space. Its geometry is captured by curvature
 - Torsion τ, the binormal B
 - The Frenet-Serret equations: how T, N, B evolve
 
-*Key insight*: The Frenet-Serret frame is an orthonormal basis that
+**Key insight**: The Frenet-Serret frame is an orthonormal basis that
 moves with the curve. The equations describe how this frame rotates as
 you traverse the curve. Curvature measures rotation toward N; torsion
 measures rotation toward B.
@@ -546,7 +549,7 @@ tangent plane — the best linear approximation at each point.
 - Differentials of maps
 - Area, integration on surfaces
 
-*Key insight*: The first fundamental form I(v, w) = ⟨v, w⟩ is an inner
+**Key insight**: The first fundamental form I(v, w) = ⟨v, w⟩ is an inner
 product on each tangent plane, inherited from the ambient space. It
 lets you measure lengths and angles on the surface without leaving it.
 In coordinates (u, v) with metric coefficients E, F, G:
@@ -638,7 +641,7 @@ curvature.
 - Classification: elliptic (K > 0), hyperbolic (K < 0), parabolic (K =
   0)
 
-*Key insight*: The shape operator asks: "If I move in direction v
+**Key insight**: The shape operator asks: "If I move in direction v
 along the surface, how does the normal turn?" The answer is another
 tangent vector. Principal curvatures are how fast the normal turns in
 the directions of maximum and minimum turning.
@@ -766,7 +769,7 @@ the surface, not on how it's embedded in space.
 - Global Gauss-Bonnet: ∫∫_S K dA = 2πχ(S)
 - Topology from geometry: Euler characteristic determined by curvature
 
-*Key insight*: Gauss-Bonnet connects local geometry (curvature) to
+**Key insight**: Gauss-Bonnet connects local geometry (curvature) to
 global topology (Euler characteristic). Total curvature is a
 topological invariant — it doesn't change under continuous
 deformations. This is the first glimpse of a pattern that recurs
@@ -980,7 +983,7 @@ together globally.
 - Charts (φ, U), atlases, smooth compatibility
 - Examples: spheres Sⁿ, projective spaces ℝPⁿ, Lie groups
 
-*Key insight*: A manifold doesn't live in any ambient space. It's
+**Key insight**: A manifold doesn't live in any ambient space. It's
 defined intrinsically by its atlas of charts. Surfaces in ℝ³ are
 manifolds, but manifolds need not be embedded anywhere. This is the
 abstraction of "intrinsic geometry" from Phase 1, taken to its logical
@@ -1015,7 +1018,7 @@ velocities live, where derivatives land, where physics happens.
 - Vector fields as smooth sections X: M → TM with π ∘ X = id
 - The cotangent bundle T*M (dual spaces at each point)
 
-*Key insight*: A tangent vector at p is not a little arrow — it's an
+**Key insight**: A tangent vector at p is not a little arrow — it's an
 operator that eats smooth functions and outputs numbers, satisfying
 the Leibniz rule: v(fg) = v(f)g(p) + f(p)v(g). This definition is
 coordinate-free and doesn't mention curves. The equivalence with the
@@ -1116,7 +1119,7 @@ def pullback_demonstration():
 pullback_demonstration()
 ```
 
-*Key insight*: Forward-mode AD (jvp) implements the pushforward df: TM
+**Key insight**: Forward-mode AD (jvp) implements the pushforward df: TM
 → TN. Reverse-mode AD (vjp) implements the pullback f*: T*N → T*M.
 This is not analogy — it is mathematical identity. The chain rule in
 calculus is the functoriality of the tangent bundle construction.
@@ -1141,7 +1144,7 @@ the family of all solutions.
 - The Lie bracket [X, Y] of vector fields
 - Interpretation: [X, Y] measures failure of flows to commute
 
-*Key insight*: Flow along X for time ε, then along Y for ε, then back
+**Key insight**: Flow along X for time ε, then along Y for ε, then back
 along X for ε, then back along Y for ε. You don't return to where you
 started. The discrepancy is approximately ε²[X, Y]. The Lie bracket
 captures this infinitesimal non-commutativity.
@@ -1281,7 +1284,7 @@ divergence into a single operator: the exterior derivative d.
 - Closed forms (dω = 0), exact forms (ω = dη)
 - Poincaré lemma: on contractible domains, closed ⟹ exact
 
-*Key insight*: The exterior derivative d generalises all classical
+**Key insight**: The exterior derivative d generalises all classical
 differential operators:
 - On 0-forms (functions): df is the gradient (as a 1-form)
 - On 1-forms in ℝ³: *d* gives the curl
@@ -1376,7 +1379,7 @@ H¹(T²) = ℝ². You don't need algebraic topology to proceed — de Rham
 cohomology stands on its own — but if the "hole-counting" intuition
 helps, use it.
 
-*Key insight*: Stokes' theorem says that d and ∂ are adjoint operators
+**Key insight**: Stokes' theorem says that d and ∂ are adjoint operators
 in a precise sense. Integration pairs forms with chains (oriented
 submanifolds). Cohomology detects when closed forms fail to be exact —
 this happens precisely when there are topological obstructions.
@@ -1472,6 +1475,7 @@ Forms and Integration"**
 *Time budget: 2 weeks preparation*
 
 **Session structure (90 minutes):**
+
 - 0:00-5:00 — Welcome, context setting
 - 5:00-25:00 — Motivation: why are forms natural? The
   change-of-variables puzzle, orientation
@@ -1543,7 +1547,7 @@ tangent space. It lets you measure lengths, angles, and volumes.
 - Hyperbolic space Hⁿ (constant negative curvature): multiple models
   (hyperboloid, Poincaré ball, upper half-space)
 
-*Key insight*: The metric g is the fundamental datum. Everything else
+**Key insight**: The metric g is the fundamental datum. Everything else
 — lengths, angles, volumes, geodesics, curvature — derives from it.
 Two Riemannian manifolds with the same metric are geometrically
 indistinguishable (isometric).
@@ -1618,7 +1622,7 @@ tells you how to "connect" nearby tangent spaces.
 - Christoffel symbols Γ^i_{jk}: the components of ∇_{∂_j}∂_k =
   Γ^i_{jk} ∂_i
 
-*Key insight*: The Levi-Civita connection is determined by the metric
+**Key insight**: The Levi-Civita connection is determined by the metric
 alone. The Christoffel symbols Γ^i_{jk} that appear in physics (GR)
 are exactly the components of this connection. The formula
 
@@ -1718,7 +1722,7 @@ also locally shortest paths.
   p
 - Geodesic completeness and the Hopf-Rinow theorem
 
-*Key insight*: The exponential map "wraps" the tangent space onto the
+**Key insight**: The exponential map "wraps" the tangent space onto the
 manifold via geodesics. In normal coordinates centered at p, geodesics
 through p are straight lines (at least near p). This is the sense in
 which geodesics are "straight."
@@ -1811,7 +1815,7 @@ to their starting position when transported around a loop.
 - Scalar curvature S = trace of Ricci
 - Constant curvature spaces: K ≡ const characterises space forms
 
-*Key insight*: Sectional curvature K(σ) is the Gaussian curvature of
+**Key insight**: Sectional curvature K(σ) is the Gaussian curvature of
 the 2-dimensional surface swept out by geodesics in directions
 spanning σ. This connects Riemann curvature directly to your Phase 1
 intuition.
@@ -1918,7 +1922,7 @@ How does local curvature constrain global structure?
   connected, then exp_p: T_pM → M is a diffeomorphism (negative
   curvature forces "spread")
 
-*Key insight*: Curvature bounds force global topology. Positive Ricci
+**Key insight**: Curvature bounds force global topology. Positive Ricci
 curvature makes manifolds "close up" (bounded diameter). Non-positive
 sectional curvature makes them "spread out" (exponential map is global
 diffeomorphism). This is geometry constraining topology.
@@ -2010,6 +2014,7 @@ The Shape of Space"**
 *Time budget: 2 weeks preparation*
 
 **Session structure (90 minutes):**
+
 - 0:00-5:00 — Welcome, why curvature matters
 - 5:00-20:00 — Gaussian curvature review: intrinsic vs extrinsic, the
   Theorema Egregium
@@ -2258,7 +2263,7 @@ Ch. 4-6)**
 - Hamilton's equations: q̇^i = ∂H/∂p_i, ṗ_i = -∂H/∂q^i
 - Phase space T*Q as the natural arena
 
-*Key insight*: The passage from Lagrangian to Hamiltonian mechanics is
+**Key insight**: The passage from Lagrangian to Hamiltonian mechanics is
 a change of perspective: from velocities (q, q̇) ∈ TQ to momenta (q, p)
 ∈ T*Q. The Legendre transform encodes this. The cotangent bundle T*Q
 is the natural home of Hamiltonian mechanics — and it carries a
@@ -2309,7 +2314,7 @@ Before manifolds, understand the linear algebra.
 - Symplectic geometry is 2n-dimensional geometry with "area
   preservation"
 
-*Key insight*: A symplectic form pairs "position directions" with
+**Key insight**: A symplectic form pairs "position directions" with
 "momentum directions." Non-degeneracy means every position has a
 conjugate momentum. Skew-symmetry means ω(v, v) = 0 — no
 "self-pairing." This is the linear algebra underlying Hamiltonian
@@ -2404,7 +2409,7 @@ print(f"\nPosition subspace is Lagrangian: {is_lagrangian_subspace(position_subs
   invariants (curvature). Symplectic manifolds have none.
 - Moser's trick (proof technique)
 
-*Key insight*: Darboux's theorem is remarkable — it says symplectic
+**Key insight**: Darboux's theorem is remarkable — it says symplectic
 geometry has no local structure. Every 2n-dimensional symplectic
 manifold looks locally like T*ℝⁿ. All the interesting structure is
 global.
@@ -2441,7 +2446,7 @@ geometry.
 - Jacobi identity: {f, {g, h}} + {g, {h, f}} + {h, {f, g}} = 0
 - Poisson bracket as Lie bracket: X_{f,g} = [X_f, X_g]
 
-*Key insight*: The symplectic form ω is a machine that converts
+**Key insight**: The symplectic form ω is a machine that converts
 differentials (1-forms like dH) into vector fields (like X_H).
 Hamilton's equations simply say: "Flow in the direction that ω pairs
 with dH." The Poisson bracket makes C^∞(M) into a Lie algebra —
@@ -2553,7 +2558,7 @@ conserved quantities.
 - **Noether's theorem**: If H is G-invariant, then μ is constant along
   Hamiltonian flow
 
-*Key insight*: The momentum map packages all conserved quantities
+**Key insight**: The momentum map packages all conserved quantities
 arising from symmetry into a single geometric object. Conservation of
 μ along trajectories is Noether's theorem in its natural habitat.
 
@@ -2601,7 +2606,7 @@ For non-separable Hamiltonians, you need implicit methods like
 implicit midpoint. These require solving nonlinear equations at each
 step.
 
-*Key insight*: Symplectic integrators don't conserve H exactly. But
+**Key insight**: Symplectic integrators don't conserve H exactly. But
 they conserve a "shadow Hamiltonian" H̃ = H + O(Δt²) *exactly*. This is
 backward error analysis — the integrator solves a slightly different
 but nearby Hamiltonian system exactly. That's why energy errors don't
@@ -2782,6 +2787,7 @@ Polish until you could deliver it at a conference.
 *Time budget: 2 weeks*
 
 Participants bring laptops:
+
 - 0:00-20:00 — Brief theory: Hamiltonian, vector field, Poisson brackets
 - 20:00-50:00 — Implement Hamilton's equations for simple systems
 - 50:00-80:00 — Implement symplectic Euler and leapfrog
@@ -2848,7 +2854,7 @@ Maxwell equations point toward bundle structure.
 - The tangent and cotangent bundles as examples
 - Transition functions and how bundles can be "twisted"
 
-*Key insight*: The gauge freedom in electromagnetism isn't a bug —
+**Key insight**: The gauge freedom in electromagnetism isn't a bug —
 it's a feature. It tells us the electromagnetic potential isn't a
 function but a section of a bundle. Different gauge choices are
 different local trivialisations of the same geometric object.
@@ -2887,7 +2893,7 @@ both the cylinder and the Möbius strip as bundles over S¹.
 - Connection 1-forms
 - Parallel transport in bundles
 
-*Key insight*: A connection tells you how to move through the total
+**Key insight**: A connection tells you how to move through the total
 space "horizontally" — staying parallel to the base. The
 electromagnetic potential A is a connection on a U(1) bundle. The
 Christoffel symbols from Riemannian geometry are a connection on the
@@ -2929,7 +2935,7 @@ horizontal lift on the surface.
 - Gauge transformations as changes of local trivialisation
 - The Aharonov-Bohm effect: holonomy has physical consequences
 
-*Key insight*: Maxwell's equations are not physics imposed on geometry
+**Key insight**: Maxwell's equations are not physics imposed on geometry
 — they *are* geometry. dF = 0 is the Bianchi identity, true for any
 curvature. d*F = J is the dynamical equation. Electromagnetism is the
 simplest gauge theory.
@@ -2968,7 +2974,7 @@ generality.
 - How Riemannian geometry fits: the Levi-Civita connection on the
   frame bundle
 
-*Key insight*: The Levi-Civita connection from Phase 3 is a connection
+**Key insight**: The Levi-Civita connection from Phase 3 is a connection
 on the frame bundle F(M). Its curvature is the Riemann curvature
 tensor. Riemannian geometry is gauge theory with structure group GL(n)
 reduced to O(n). Everything connects.
@@ -3029,6 +3035,7 @@ The full picture:
 *Time budget: 2 weeks*
 
 **Session structure (90 minutes):**
+
 - 0:00-5:00 — Welcome, what are gauge theories?
 - 5:00-25:00 — Maxwell's equations in form language
 - 25:00-45:00 — The gauge principle: U(1) bundles and connections
