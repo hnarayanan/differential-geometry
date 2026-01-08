@@ -251,22 +251,25 @@ Different books use different sign conventions, index placements, and
 notational choices. This causes endless confusion. Here are the
 conventions this curriculum follows:
 
-**Riemann curvature tensor**: R(X,Y)Z = ∇_X∇_YZ - ∇_Y∇_XZ -
-∇_{[X,Y]}Z. This is Lee's convention and most modern differential
-geometry texts. *Warning*: Do Carmo and some physics texts use the
-opposite sign. If your calculation differs by a sign, check
-conventions first.
+**Riemann curvature tensor**: $R(X,Y)Z = \nabla_X \nabla_Y Z -
+\nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z$. This is Lee's convention and
+most modern differential geometry texts. *Warning*: Do Carmo and some
+physics texts use the opposite sign. If your calculation differs by a
+sign, check conventions first.
 
-**Christoffel symbols**: Γ^i_{jk} denotes the components of ∇_{∂_j}∂_k
-= Γ^i_{jk} ∂_i. Reading the indices: i is the output component, j is
-the differentiation direction, k is the input field.
+**Christoffel symbols**: $\Gamma^i_{jk}$ denotes the components of
+$\nabla_{\partial_j}\partial_k = \Gamma^i_{jk}\,\partial_i$. Reading
+the indices: $i$ is the output component, $j$ is the differentiation
+direction, $k$ is the input field.
 
-**Symplectic form**: We use ω = Σ dq^i ∧ dp_i on cotangent bundles,
-with coordinates ordered (q¹,...,qⁿ,p₁,...,pₙ). The matrix
-representation is J = [[0, I], [-I, 0]].
+**Symplectic form**: We use $\omega = \sum_i dq^i \wedge dp_i$ on
+cotangent bundles, with coordinates ordered
+$(q^1,\ldots,q^n,p_1,\ldots,p_n)$. The matrix representation is $J =
+\begin{bmatrix} 0 & I \\ -I & 0 \end{bmatrix}$.
 
 **Musical isomorphisms**: ♭ ("flat") lowers indices using the metric:
-v^♭ = g(v, ·). ♯ ("sharp") raises them: α^♯ = g^{-1}(α, ·).
+$v^\flat = g(v, \cdot)$. ♯ ("sharp") raises them: $\alpha^\sharp =
+g^{-1}(\alpha, \cdot)$.
 
 When in doubt, compute a simple example and check against a trusted
 source.
