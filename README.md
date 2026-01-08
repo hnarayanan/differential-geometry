@@ -433,11 +433,13 @@ from an interval into space. Its geometry is captured by curvature
 (how fast it turns) and torsion (how it twists out of a plane).
 
 **Week 1-2: Parametrised curves**
+
 - Regular curves, arc length parametrisation
 - The tangent vector T as velocity
 - Reparametrisation and geometric invariants
 
 **Week 3-4: Frenet-Serret apparatus**
+
 - Curvature κ, the principal normal N
 - Torsion τ, the binormal B
 - The Frenet-Serret equations: how T, N, B evolve
@@ -540,11 +542,13 @@ A surface is (locally) a map from ℝ² into ℝ³. The key object is the
 tangent plane — the best linear approximation at each point.
 
 **Week 1-2: Regular surfaces**
+
 - Coordinate patches, smooth maps between surfaces
 - The tangent plane as image of the differential
 - The first fundamental form: measuring lengths on the surface
 
 **Week 3-4: Maps and calculus on surfaces**
+
 - Smooth functions on surfaces
 - Differentials of maps
 - Area, integration on surfaces
@@ -630,11 +634,13 @@ this map stretches and rotates tells you about the surface's
 curvature.
 
 **Week 1-2: The Gauss map and the second fundamental form**
+
 - The Gauss map N: S → S²
 - Shape operator (Weingarten map): dN_p: T_pS → T_pS
 - Second fundamental form II(v, w) = -⟨dN_p(v), w⟩
 
 **Week 3-4: Principal, Gaussian, and mean curvature**
+
 - Principal curvatures κ₁, κ₂ as eigenvalues of shape operator
 - Gaussian curvature K = κ₁κ₂ = det(shape operator)
 - Mean curvature H = (κ₁ + κ₂)/2 = ½ trace(shape operator)
@@ -755,16 +761,19 @@ only on the first fundamental form — only on measurements made within
 the surface, not on how it's embedded in space.
 
 **Week 1-2: Isometries and the intrinsic**
+
 - Isometries: maps preserving the first fundamental form
 - What properties are intrinsic (detectable from within)?
 - Christoffel symbols and the intrinsic covariant derivative
 
 **Week 3: The Theorema Egregium**
+
 - Gauss's "remarkable theorem": K is intrinsic
 - The formula for K in terms of E, F, G and their derivatives
 - Why this is surprising and profound
 
 **Week 4: Gauss-Bonnet theorem**
+
 - Local Gauss-Bonnet: angle excess in geodesic triangles
 - Global Gauss-Bonnet: ∫∫_S K dA = 2πχ(S)
 - Topology from geometry: Euler characteristic determined by curvature
@@ -888,6 +897,7 @@ changed your understanding?
 **Phase 1 Capstone: The sphere as surface**
 
 Great circles are geodesics of the sphere. Verify this:
+
 - Parametrise a great circle as a curve in ℝ³
 - Compute its curvature κ and torsion τ using Frenet-Serret
 - Show κ = 1/R (constant), τ = 0 (planar)
@@ -973,11 +983,13 @@ looks locally like ℝⁿ. The power comes from how local pieces glue
 together globally.
 
 **Week 1-2: Smooth functions and Euclidean space**
+
 - Smooth functions on ℝⁿ
 - The derivative as a linear map: Df_p: ℝⁿ → ℝᵐ
 - Taylor's theorem with remainder
 
 **Week 3-4: Manifolds and smooth structure**
+
 - Topological manifolds: locally Euclidean, Hausdorff, second
   countable
 - Charts (φ, U), atlases, smooth compatibility
@@ -1009,11 +1021,13 @@ The tangent space at a point is the fundamental object. It's where
 velocities live, where derivatives land, where physics happens.
 
 **Week 1-2: Tangent vectors as derivations**
+
 - Tangent vectors as equivalence classes of curves (intuitive)
 - Tangent vectors as derivations on germs (rigorous)
 - The tangent space T_pM as a vector space of dimension n = dim M
 
 **Week 3-4: The tangent bundle**
+
 - TM = ∐_{p∈M} T_pM as a manifold of dimension 2n
 - Vector fields as smooth sections X: M → TM with π ∘ X = id
 - The cotangent bundle T*M (dual spaces at each point)
@@ -1135,11 +1149,13 @@ curves are solutions to the ODE "follow the vector field." The flow is
 the family of all solutions.
 
 **Week 1-2: Vector fields and integral curves**
+
 - Vector fields as sections X: M → TM
 - Integral curves: γ'(t) = X(γ(t))
 - Local existence and uniqueness (Picard-Lindelöf)
 
 **Week 3-4: Flows and Lie brackets**
+
 - One-parameter groups of diffeomorphisms φ_t: M → M
 - The Lie bracket [X, Y] of vector fields
 - Interpretation: [X, Y] measures failure of flows to commute
@@ -1272,11 +1288,13 @@ Differential forms are what you integrate. They unify gradient, curl,
 divergence into a single operator: the exterior derivative d.
 
 **Week 1-2: Differential k-forms**
+
 - 1-forms as dual to vector fields: ω ∈ Ω¹(M) eats vector fields
 - k-forms via wedge product: Ωᵏ(M) = sections of ∧ᵏT*M
 - The exterior algebra Ω*(M) = ⊕ₖ Ωᵏ(M)
 
 **Week 3-4: The exterior derivative**
+
 - d: Ωᵏ(M) → Ωᵏ⁺¹(M), uniquely determined by:
   - d(f) = df for functions (the differential)
   - d(dω) = 0 for all ω
@@ -1356,16 +1374,19 @@ Stokes' theorem is the fundamental theorem of calculus in all
 dimensions.
 
 **Week 1-2: Integration of forms**
+
 - Orientation of manifolds
 - Integration of n-forms on n-manifolds
 - Pullback and change of variables
 
 **Week 3: Stokes' theorem**
+
 - The statement: ∫_M dω = ∫_{∂M} ω
 - Recovering classical theorems: Green, Divergence, Classical Stokes
 - The boundary ∂ and the exterior derivative d are adjoint
 
 **Week 4: De Rham cohomology**
+
 - H^k_{dR}(M) = {closed k-forms} / {exact k-forms}
 - What cohomology measures: "k-dimensional holes"
 - H^0(M) = ℝ^{#components}, H^1(S¹) = ℝ, H^2(S²) = ℝ
@@ -1438,6 +1459,7 @@ get stuck? What would you do differently?
 **Phase 2 Capstone: The sphere as manifold**
 
 Now see the sphere abstractly:
+
 - Write an atlas for S² (stereographic projection from north and south
   poles)
 - Verify the transition function is smooth
@@ -1536,12 +1558,14 @@ A Riemannian metric is a smoothly varying inner product on each
 tangent space. It lets you measure lengths, angles, and volumes.
 
 **Week 1-2: Riemannian manifolds**
+
 - Riemannian metric g: a smooth section of Sym²(T*M) that's positive
   definite
 - The metric in local coordinates: g = g_{ij} dx^i ⊗ dx^j
 - Lengths of curves, Riemannian distance, isometries
 
 **Week 3-4: Model spaces**
+
 - Euclidean space (ℝⁿ, δ_{ij})
 - Spheres Sⁿ with round metric (constant positive curvature)
 - Hyperbolic space Hⁿ (constant negative curvature): multiple models
@@ -1608,11 +1632,13 @@ subtract them — they live in different vector spaces. A connection
 tells you how to "connect" nearby tangent spaces.
 
 **Week 1-2: Connections on vector bundles**
+
 - The problem: V ∈ T_pM and W ∈ T_qM live in different spaces
 - Connections as covariant derivative: ∇: 𝔛(M) × Γ(E) → Γ(E)
 - Properties: ℝ-linear in Y, tensorial in X, Leibniz rule
 
 **Week 3-4: The Levi-Civita connection**
+
 - Metric compatibility: ∇g = 0 (parallel transport preserves inner
   products)
 - Torsion-freeness: ∇_X Y - ∇_Y X = [X, Y]
@@ -1710,12 +1736,14 @@ transport their own tangent vectors. On a Riemannian manifold, they're
 also locally shortest paths.
 
 **Week 1-2: Geodesics**
+
 - Definition: ∇_{γ'}γ' = 0 (autoparallel curves)
 - Geodesic equation in coordinates: γ̈^i + Γ^i_{jk} γ̇^j γ̇^k = 0
 - Existence and uniqueness: given p ∈ M and v ∈ T_pM, there's a unique
   geodesic through p with initial velocity v
 
 **Week 3-4: The exponential map**
+
 - exp_p: T_pM → M sends v to γ_v(1) where γ_v is the geodesic with
   γ_v(0) = p, γ_v'(0) = v
 - Normal coordinates: coordinates where Christoffel symbols vanish at
@@ -1803,6 +1831,7 @@ Curvature measures the failure of parallel transport to return vectors
 to their starting position when transported around a loop.
 
 **Week 1-2: The Riemann curvature tensor**
+
 - Definition: R(X,Y)Z = ∇_X ∇_Y Z - ∇_Y ∇_X Z - ∇_{[X,Y]} Z
 - In coordinates: R^i_{jkl} = ∂_k Γ^i_{jl} - ∂_l Γ^i_{jk} +
   Γ^i_{km}Γ^m_{jl} - Γ^i_{lm}Γ^m_{jk}
@@ -1810,6 +1839,7 @@ to their starting position when transported around a loop.
   identity
 
 **Week 3-4: Sectional, Ricci, and scalar curvature**
+
 - Sectional curvature K(σ) for a 2-plane σ ⊂ T_pM
 - Ricci curvature Ric(v,v) = trace of w ↦ R(w,v)v
 - Scalar curvature S = trace of Ricci
@@ -1909,11 +1939,13 @@ print(f"Expected: -2.0 (since K = -1 and S = 2K in 2D)")
 How does local curvature constrain global structure?
 
 **Week 1-2: Jacobi fields**
+
 - Jacobi fields measure geodesic deviation
 - Equation: J'' + R(J, γ')γ' = 0 along geodesic γ
 - Conjugate points: where Jacobi fields vanish
 
 **Week 3-4: Global theorems**
+
 - **Hopf-Rinow**: Geodesic completeness ⟺ metric completeness ⟺ closed
   bounded sets compact
 - **Bonnet-Myers**: If Ric ≥ (n-1)κ > 0, then diam(M) ≤ π/√κ (positive
@@ -1968,6 +2000,7 @@ evolved? What was most difficult? What finally made it click?
 **Phase 3 Capstone: The sphere with connection**
 
 Now you have the tools:
+
 - Compute Christoffel symbols for the round metric on S² in spherical
   coordinates
 - Write the geodesic equation; verify great circles satisfy it
@@ -2072,6 +2105,7 @@ coadjoint representations connect algebra to geometry.
 
 **Week 1: Lie groups by example**
 
+
 **What is a Lie group?**
 
 A Lie group is a group that's also a smooth manifold, with smooth
@@ -2160,6 +2194,7 @@ print(f"det(R) = {jnp.linalg.det(R):.4f}")
 ---
 
 **Week 2: Adjoint and coadjoint representations**
+
 
 **Why this matters for mechanics:**
 
@@ -2251,12 +2286,14 @@ describe. Arnold's first six chapters provide the essential physical
 grounding.
 
 **Week 1-2: Newtonian and Lagrangian mechanics (Arnold Ch. 1-3)**
+
 - Configuration space Q, generalised coordinates q^i
 - The Lagrangian L(q, q̇, t) = T - V
 - Euler-Lagrange equations: d/dt(∂L/∂q̇^i) - ∂L/∂q^i = 0
 - The action principle: δ∫L dt = 0
 
 **Week 3-4: The Legendre transform and Hamiltonian mechanics (Arnold
+
 Ch. 4-6)**
 - From Lagrangian to Hamiltonian: H(q, p) = p·q̇ - L(q, q̇)
 - Canonical momentum: p_i = ∂L/∂q̇^i
@@ -2300,6 +2337,7 @@ https://people.math.ethz.ch/~acannas/Papers/lsg.pdf
 Before manifolds, understand the linear algebra.
 
 **Week 1-2: Symplectic vector spaces**
+
 - A symplectic form on a vector space V is a bilinear form ω: V × V →
   ℝ that is:
   - Skew-symmetric: ω(v, w) = -ω(w, v)
@@ -2308,6 +2346,7 @@ Before manifolds, understand the linear algebra.
 - Symplectic basis, Darboux coordinates
 
 **Week 3-4: Symplectic linear maps and Lagrangian subspaces**
+
 - The symplectic group Sp(2n, ℝ) = {A : Aᵀ J A = J} where J = [[0, I],
   [-I, 0]]
 - Lagrangian subspaces: n-dimensional subspaces L ⊂ V with ω|_L = 0
@@ -2394,12 +2433,14 @@ print(f"\nPosition subspace is Lagrangian: {is_lagrangian_subspace(position_subs
 **Primary text: Cannas da Silva, Parts II-III**
 
 **Week 1-2: Symplectic manifolds**
+
 - Definition: (M, ω) with ω closed and non-degenerate
 - Primary example: T*Q with canonical symplectic form ω = -dθ where θ
   = p_i dq^i
 - Other examples: Kähler manifolds, coadjoint orbits
 
 **Week 3-4: Darboux's theorem**
+
 - **Statement**: Around any point of a symplectic manifold, there
   exist local coordinates (q¹,...,qⁿ,p₁,...,pₙ) such that ω = Σ dq^i ∧
   dp_i
@@ -2435,12 +2476,14 @@ Hamilton's equations are not physics imposed on geometry — they *are*
 geometry.
 
 **Week 1-2: Hamiltonian vector fields**
+
 - Given H: M → ℝ, define X_H by: ω(X_H, ·) = dH
 - In coordinates: X_H = (∂H/∂p_i)∂/∂q^i - (∂H/∂q^i)∂/∂p_i
 - Hamilton's equations are: γ̇ = X_H(γ)
 - Energy conservation: H is constant along integral curves of X_H
 
 **Week 3-4: Poisson brackets**
+
 - Definition: {f, g} = ω(X_f, X_g) = X_f(g) = -X_g(f)
 - In coordinates: {f, g} = Σ(∂f/∂q^i ∂g/∂p_i - ∂f/∂p_i ∂g/∂q^i)
 - Jacobi identity: {f, {g, h}} + {g, {h, f}} + {h, {f, g}} = 0
@@ -2546,11 +2589,13 @@ Noether's theorem geometrised: continuous symmetries correspond to
 conserved quantities.
 
 **Week 1-2: Group actions and symmetry**
+
 - Lie group G acting on symplectic manifold (M, ω)
 - Symplectic action: g*ω = ω for all g ∈ G
 - Infinitesimal action: Lie algebra 𝔤 → vector fields on M
 
 **Week 3-4: The momentum map**
+
 - Definition: μ: M → 𝔤* is a momentum map if:
   - For each ξ ∈ 𝔤, the function μ_ξ = ⟨μ, ξ⟩ satisfies X_{μ_ξ} = ξ_M
   - μ is equivariant: μ(g·x) = Ad*_g(μ(x))
@@ -2583,12 +2628,14 @@ times, they introduce spurious drift. Symplectic integrators preserve
 the geometry.
 
 **Week 1-2: Why symplectic integration?**
+
 - Standard integrators (Runge-Kutta, Adams) don't preserve ω
 - Long-time energy drift: non-symplectic methods show secular growth
   in energy error
 - Symplectic integrators: Aᵀ J A = J for the discrete flow A
 
 **Week 3-4: Symplectic methods**
+
 
 For separable Hamiltonians H(q, p) = T(p) + V(q):
 
@@ -2745,6 +2792,7 @@ You've climbed a long way. Take a few days to rest and reflect.
 **Phase 4 Capstone: The sphere as phase space**
 
 The deepest view so far:
+
 - The cotangent bundle T*S² is 4-dimensional and symplectic
 - The Hamiltonian H(q,p) = ½g^{ij}p_i p_j generates geodesic flow
 - Verify Hamilton's equations reproduce the geodesic equation
@@ -2844,11 +2892,13 @@ Begin with what you know: electromagnetism. See how the familiar
 Maxwell equations point toward bundle structure.
 
 **Week 1-2: Review and reframe**
+
 - Maxwell's equations in differential form language
 - The vector potential A and gauge transformations A → A + dλ
 - Why gauge freedom suggests bundle structure
 
 **Week 3-4: Vector bundles**
+
 - Vector bundle: (E, π, M) where π: E → M with vector space fibers
 - Sections: smooth maps s: M → E with π ∘ s = id_M
 - The tangent and cotangent bundles as examples
@@ -2881,12 +2931,14 @@ both the cylinder and the Möbius strip as bundles over S¹.
 **Companion: Schuller Lectures 23-25**
 
 **Week 1-2: Principal bundles**
+
 - Principal G-bundle: P → M with free, transitive G-action on fibers
 - The frame bundle F(M) as the prototype
 - Associated bundles: how vector bundles arise from principal bundles
 - Gauge transformations as bundle automorphisms
 
 **Week 3-4: Connections**
+
 - The problem: how to compare vectors (or group elements) at different
   points
 - Connections as "horizontal subspaces" — a rule for lifting paths
@@ -2923,12 +2975,14 @@ horizontal lift on the surface.
 **Companion: Frankel, Chapters 15-17**
 
 **Week 1-2: Curvature of connections**
+
 - Curvature as the failure of parallel transport to close around loops
 - Curvature 2-form: Ω = dω + ½[ω, ω]
 - Flat connections: Ω = 0
 - Holonomy: the group element acquired by transport around a loop
 
 **Week 3-4: Electromagnetism as geometry**
+
 - The electromagnetic field F = dA is curvature of a U(1) connection
 - Maxwell's equations: dF = 0 (Bianchi identity), d*F = J (field
   equation)
@@ -2962,11 +3016,13 @@ generality.
 **Companion: Frankel, Chapters 17-18**
 
 **Week 1-2: Yang-Mills theory**
+
 - Non-abelian gauge groups: SU(2), SU(3)
 - The Yang-Mills equations
 - The Standard Model as a gauge theory (overview)
 
 **Week 3-4: Characteristic classes (overview) and synthesis**
+
 - Chern-Weil theory: building topological invariants from curvature
 - Chern-Simons theory: the bridge to knot theory (optional preview)
 - Chern classes, Pontryagin classes
@@ -3008,6 +3064,7 @@ bundle theory change your understanding? What questions remain?
 **Phase 5 Capstone: The sphere with structure group**
 
 The full picture:
+
 - The frame bundle F(S²) is a principal SO(2)-bundle over S²
 - The Levi-Civita connection is a connection on F(S²)
 - Its curvature 2-form encodes Gaussian curvature
@@ -3119,6 +3176,7 @@ fulfillment.
 Neural networks encode geometric assumptions. Understanding these enables better design.
 
 **Topics:**
+
 - Symmetry, invariance, equivariance in ML
 - Group theory for ML: representations, Schur's lemma
 - Equivariant neural networks
@@ -3130,6 +3188,7 @@ Neural networks encode geometric assumptions. Understanding these enables better
 ### Months 27-28: Physics-informed architectures
 
 **Topics:**
+
 - Hamiltonian Neural Networks (Greydanus et al., 2019)
 - Lagrangian Neural Networks (Cranmer et al., 2020)
 - Neural ODEs with geometric structure
@@ -3144,6 +3203,7 @@ Neural networks encode geometric assumptions. Understanding these enables better
 DEC is differential geometry for meshes.
 
 **Topics:**
+
 - Simplicial complexes and chains
 - Discrete forms as cochains
 - Discrete exterior derivative
@@ -3188,6 +3248,7 @@ Build toward executable science:
 **Phase 6 Capstone: The sphere in computation**
 
 Bring it full circle:
+
 - Implement geodesic regression on S²: given points, find the best-fit
   geodesic
 - Use a Hamiltonian neural network to learn the geodesic flow
@@ -3208,6 +3269,7 @@ Bring it full circle:
 **Secondary deliverable: Tutorial — "Geometric Deep Learning from First Principles"**
 
 Accessible introduction covering:
+
 - Why geometry matters for ML
 - Key architectures
 - Hands-on implementations
