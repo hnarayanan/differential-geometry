@@ -271,6 +271,13 @@ $(q^1,\ldots,q^n,p_1,\ldots,p_n)$. The matrix representation is $J =
 $v^\flat = g(v, \cdot)$. ♯ ("sharp") raises them: $\alpha^\sharp =
 g^{-1}(\alpha, \cdot)$.
 
+**The cardinal rule**: Pick one source's conventions for your code and
+stick to it. This curriculum follows Lee for Riemannian geometry and
+Cannas da Silva for symplectic geometry. When you consult other
+sources (Frankel, Arnold, Do Carmo), mentally translate to these
+conventions before writing code. Mixing conventions in a single
+calculation is the most common source of sign errors.
+
 When in doubt, compute a simple example and check against a trusted
 source.
 
@@ -504,7 +511,8 @@ def frenet_serret(curve, t):
     safe_cross_norm = jnp.maximum(cross_norm, 1e-10)
 
     # Principal normal (direction of curvature)
-    # N = (dr × ddr) × dr / |...| when κ ≠ 0
+    # Note: N is geometrically undefined at inflection points (κ = 0);
+    # the computation below returns a numerically regularized value.
     dT_unnorm = ddr / speed - jnp.dot(ddr, T) * T / speed
     N = dT_unnorm / jnp.linalg.norm(dT_unnorm + 1e-10)
 
@@ -1010,6 +1018,18 @@ conclusion.
 ℝPⁿ = Sⁿ/{±1}) requires comfort with equivalence relations and
 quotient topology. If this feels shaky, review quotient spaces in
 Munkres or work through the construction of ℝP² very carefully.
+
+**The coordinate independence discipline**: Here is the central habit
+you must build: whenever you define something using coordinates (x¹,
+..., xⁿ), immediately ask "If I use a different chart (y¹, ..., yⁿ),
+do I get the same answer?" If your definition gives different results
+in different charts, you haven't defined a geometric object — you've
+defined a coordinate artifact. This is why tensors transform the way
+they do: a tensor is a geometric object that *happens* to have
+coordinate representations, and the transformation law ensures all
+charts give the same geometric object. When calculations go wrong, the
+first question is often: "Did I write something coordinate-dependent
+by accident?"
 
 **Transcribe**: Schuller Lectures 1-3 (Logic, Set Theory, Topology).
 These provide the foundational precision Tu assumes.
@@ -2238,6 +2258,31 @@ This is the action that matters for mechanics. Angular momentum lives
 in 𝔰𝔬(3)* ≅ ℝ³, and the coadjoint action is how angular momentum
 transforms under rotations.
 
+**Visual anchor — the three actions of a Lie group**:
+
+Picture SO(3) (rotations in 3D). It acts on three different spaces:
+
+1. **G acts on itself** (left multiplication): One rotation followed
+   by another. This is just composition of rotations.
+
+2. **G acts on 𝔤** (adjoint): The Lie algebra 𝔰𝔬(3) consists of
+   infinitesimal rotations — angular velocities. If you rotate your
+   reference frame by R, an angular velocity ω transforms to RωRᵀ. The
+   *axis* of rotation gets rotated.
+
+3. **G acts on 𝔤*** (coadjoint): The dual 𝔰𝔬(3)* is where angular
+   *momentum* lives. When you rotate your reference frame, angular
+   momentum transforms too — but as a covector, not a vector.
+
+The key insight: angular velocity lives in 𝔤 (how fast you're
+spinning), angular momentum lives in 𝔤* (how much spinning you have).
+They're related by the inertia tensor (a metric on 𝔤 that maps vectors
+to covectors), which is why they transform differently. For a sphere
+(isotropic inertia), they're proportional; for a general rigid body,
+they're not.
+
+This is why momentum maps land in 𝔤*, not 𝔤.
+
 **The punchline for momentum maps:**
 
 When a Lie group G acts on a symplectic manifold (M, ω) preserving the
@@ -3153,8 +3198,8 @@ thinking in disguise.
 | Equivariant map | Layer that respects the symmetry |
 
 The Lie groups from the Phase 4 prelude — SO(3), SE(3), SU(2) — are
-exactly the symmetry groups that matter for physical systems. The
-representation theory you glimpsed (adjoint, coadjoint) is what
+prototypes of the symmetry groups that matter for physical systems.
+The representation theory you glimpsed (adjoint, coadjoint) is what
 determines how features can transform.
 
 **Why this matters for Contravariant Systems**: Structure-preserving
