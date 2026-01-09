@@ -93,6 +93,39 @@ reading; others will be dominated by a single hard problem. The rhythm
 matters more than the precise allocation. Fifteen minutes on a hard
 day beats zero minutes.
 
+### Monthly rhythm
+
+Beyond the weekly cadence, two monthly practices make the difference
+between surface familiarity and genuine ownership:
+
+**Definition/proof clinic (end of each month):** Pick 5-10 key
+definitions and theorems from the month's material. Write them from
+memory, with one nontrivial example each. This is not review — it's
+active recall, the highest-leverage study technique. If you can't
+write it without notes, you don't own it yet.
+
+**Minimum viable output (for difficult months):** Life will compress
+your study time. Define in advance what "success" looks like when time
+is short: perhaps "complete 5 exercises + write one 10-minute
+explanation." This prevents the psychology of "failure" that causes
+people to abandon curricula entirely.
+
+### Deload weeks
+
+Every 8-10 weeks, schedule a **deload week**: no new material.
+Instead:
+
+- Consolidate and rewrite notes from the previous two months
+- Re-solve 5-10 problems from earlier phases (without looking at old
+  solutions)
+- Record yourself explaining one concept aloud — notice where you
+  stumble
+
+This is not lost time. Conceptual debt accumulates invisibly; deload
+weeks pay it down before it compounds. Four deload weeks per year,
+positioned after major phase transitions, will dramatically improve
+retention.
+
 ### Spiral returns
 
 At the end of each major phase, you return to earlier material with
@@ -193,6 +226,29 @@ an idea explained differently often unlocks it.
 If you step away for months, you can come back. The mathematics isn't
 going anywhere. The structures are patient. They've been waiting for
 centuries; they'll wait for you.
+
+### Monthly reflection
+
+At the end of each month, answer these five questions (one page
+total):
+
+1. **What did I prove** (not just read)? Can I reproduce the argument
+   without notes?
+
+2. **What did I compute** that had a crisp invariant check? Did the
+   check pass?
+
+3. **What did I explain** to an imaginary student, and what broke when
+   I tried?
+
+4. **What concept became more coordinate-free** in my head this month?
+   Where am I still reaching for indices?
+
+5. **What is my next spiral-return point** if life intervenes and I
+   must step away?
+
+These questions track real learning, not just activity. If you can't
+answer them, the month's work hasn't consolidated yet.
 
 ---
 
@@ -408,6 +464,31 @@ import sympy
 from sympy import symbols, Function, diff, simplify
 ```
 
+### Validation protocol
+
+Every computational artifact in this curriculum should pass four
+checks:
+
+1. **Known special case**: Test on a space with known answer (sphere,
+   plane, circle). If your parallel transport code doesn't give zero
+   holonomy on a flat torus, something is wrong.
+
+2. **Invariant check**: Verify geometric properties are preserved.
+   Does your geodesic solver conserve ⟨γ̇, γ̇⟩? Does parallel transport
+   preserve vector length? Does your symplectic integrator satisfy
+   det(Jacobian) = 1?
+
+3. **Convergence test**: As step size → 0, does the answer converge?
+   At what rate? Symplectic Euler should be O(Δt), leapfrog should be
+   O(Δt²).
+
+4. **Convention lock**: Document your sign conventions, index
+   ordering, and coordinate choices. When your calculation differs
+   from the textbook by a sign, this is where to look first.
+
+This protocol is non-negotiable. Code that passes all four checks is
+trustworthy. Code that skips them will betray you at the worst moment.
+
 ### First computation
 
 Before any theory, make something work:
@@ -447,6 +528,25 @@ deepen.
 Write a 500-word reflection: "What I know, what I don't know, what I
 want to understand." This becomes the first entry in your learning
 journal.
+
+### The canonical example set
+
+Throughout this curriculum, certain spaces appear repeatedly.
+Formalize them now as your "test suite" for every new concept:
+
+| Space | Why it matters |
+|-------|----------------|
+| **S²** (2-sphere) | The capstone object. Positive curvature, nontrivial holonomy, compact. |
+| **T²** (2-torus) | Flat but topologically nontrivial. Good for testing global vs. local. |
+| **H²** (hyperbolic plane) | Negative curvature, geodesic divergence. The "opposite" of S². |
+| **SO(3)** | The first nontrivial Lie group you'll use. Rotation symmetry everywhere. |
+| **RP²** (real projective plane) | A quotient space. Tests your understanding of equivalence relations on manifolds. |
+| **T\*S¹** (cotangent bundle of circle) | The simplest cotangent bundle. Phase space of a pendulum. |
+
+When you learn a new concept — say, parallel transport, or symplectic
+form, or connection — **instantiate it on at least two of these
+spaces**. The concept isn't yours until you can compute with it on
+familiar ground.
 
 ---
 
@@ -2060,6 +2160,15 @@ curvature makes manifolds "close up" (bounded diameter). Non-positive
 sectional curvature makes them "spread out" (exponential map is global
 diffeomorphism). This is geometry constraining topology.
 
+**Comparison geometry thread (2-3 sessions):** Don't just state these
+theorems — collect geometric pictures for each. How does positive
+curvature "close things up"? (Geodesics that start parallel converge;
+the sphere is the prototype.) How does negative curvature "spread
+things out"? (Geodesics that start parallel diverge; hyperbolic space
+is the prototype.) Sketch geodesic triangles on S², ℝ², and H² — see
+how angle sums change. This visual understanding will anchor the
+theorems permanently.
+
 ### Celebrating Phase 3
 
 You now understand Riemannian geometry — the geometry of manifolds
@@ -2651,6 +2760,14 @@ Hamilton's equations simply say: "Flow in the direction that ω pairs
 with dH." The Poisson bracket makes C^∞(M) into a Lie algebra —
 functions can "act" on each other.
 
+**The symplectic-Poisson bridge:** Notice that the Poisson bracket is
+*defined* by the symplectic form: {f, g} = ω(X_f, X_g). The bracket
+encodes the same information as ω — they are two faces of the same
+structure. This prepares you for Dirac geometry (Phase 5), where
+you'll see manifolds with Poisson brackets that don't come from
+symplectic forms. The symplectic case is the non-degenerate special
+case of the Poisson case.
+
 **Computation**: Implement Hamiltonian mechanics.
 
 ```python
@@ -2773,6 +2890,25 @@ it is mathematical identity via the momentum map.
 several pieces (the dual 𝔤*, equivariance, the generating property).
 Work through the examples carefully: see how linear momentum, angular
 momentum, and the moment of inertia tensor all fit this framework.
+
+**Symmetry ceremony (1 week):** Make the Noether correspondence vivid
+by computing conserved quantities for two canonical systems:
+
+1. **Free rigid body**: SO(3) acts by rotation. The momentum map is
+   angular momentum **L** ∈ 𝔰𝔬(3)*. Verify that **L** is conserved
+   along Euler's equations. See the body angular momentum vs. spatial
+   angular momentum distinction as the coadjoint action.
+
+2. **Kepler problem**: SO(3) acts on T*ℝ³. Angular momentum **L** is
+   conserved (central force). But there's more: the Laplace-Runge-Lenz
+   vector **A** is also conserved. Together, **L** and **A** generate
+   an SO(4) symmetry (for bound orbits). This is why Kepler orbits
+   close — a fact that surprised Kepler and wasn't explained until
+   Noether.
+
+Do these by hand, then in code. Then explain them aloud to an
+imaginary student. This is the ceremony that makes "symmetry implies
+conservation" feel inevitable rather than mysterious.
 
 ### Month 20: Symplectic integrators
 
@@ -3208,6 +3344,14 @@ generality.
 Milnor & Stasheff, *Characteristic Classes*, Chapters 1-5, changes how
 you see global structure. Characteristic classes detect when bundles
 are "twisted" in ways that cannot be untwisted.
+
+**Chern-Weil glimpse (one session):** Don't just read about
+characteristic classes — compute one. The first Chern class of the
+tautological bundle over CP¹ (which is also the Euler class of TS²)
+can be computed explicitly: integrate the curvature 2-form over the
+base manifold. For the sphere with round metric, this gives 2 (the
+Euler characteristic). One concrete computation makes the entire
+Chern-Weil machine feel real rather than abstract.
 
 **Lecture resources:**
 
