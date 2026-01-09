@@ -243,6 +243,30 @@ prestigious German teaching award. Perfect for transcription practice.
 
 *Engagement level: Transcribe selected lectures (schedule below)*
 
+
+### The Physicist's Voice
+
+**V.I. Arnold, *Mathematical Methods of Classical Mechanics*** (2nd
+ed., Springer, 1989)
+
+Not a textbook to work through linearly — a voice to be in
+conversation with. Keep it on the nightstand during Phase 4. When a
+symplectic concept clicks in Cannas da Silva or Auroux, see what
+Arnold says. His geometric intuition is irreplaceable.
+
+*Engagement level: Bedside reading throughout Phase 4*
+
+### The Gauge Theory Bridge
+
+**José Figueroa-O'Farrill, *Gauge Theory lecture notes*** (Edinburgh)
+https://empg.maths.ed.ac.uk/Activities/GT/
+
+Legendary notes with a physics-native voice. Principal bundles →
+connections → curvature → Yang-Mills. Consult throughout Phase 5
+alongside Baez & Muniain.
+
+*Engagement level: Primary reference for Phase 5*
+
 ---
 
 ## A note on conventions
@@ -472,6 +496,17 @@ several points along a helix — this single picture will anchor
 everything.
 
 **Exercises**: Do Carmo Chapter 1, problems 1-5, 7, 9, 12, 15.
+
+**Lecture resources:**
+
+- **MIT 18.950 — Differential Geometry (Seidel)**:
+  https://ocw.mit.edu/courses/18-950-differential-geometry-fall-2008/
+  — rigorous, curvature-centered; use problem sets alongside Do Carmo
+- **NPTEL — Differential Geometry (Govindarajan, IIT Madras)**:
+  https://www.youtube.com/playlist?list=PLbMVogVj5nJTBlqkGSsqEhsWxj3gBX7cK
+  — systematic full course
+- **Alan Huckleberry (Jacobs University Bremen)**: search YouTube —
+  classical DG with lecture feel
 
 **Computation**: Implement Frenet-Serret numerically.
 
@@ -1034,6 +1069,16 @@ by accident?"
 **Transcribe**: Schuller Lectures 1-3 (Logic, Set Theory, Topology).
 These provide the foundational precision Tu assumes.
 
+**Lecture resources:**
+
+- **MIT 18.965 — Geometry of Manifolds (Mrowka)**:
+  https://ocw.mit.edu/courses/18-965-geometry-of-manifolds-fall-2004/
+  — canonical graduate manifolds course; matches Tu's arc
+- **NPTEL — Introduction to Smooth Manifolds (Harish Seshadri,
+  IISc)**: search NPTEL — full course with Stokes as capstone
+- **ICTP Diploma — Differential Geometry (Claudio Arezzo)**: search
+  ICTP YouTube — smooth transition into manifolds/forms
+
 **Exercises**: Tu, end-of-chapter problems for Chapters 1-7 (selected:
 focus on problems marked with * or that involve explicit
 constructions).
@@ -1391,6 +1436,12 @@ forms are the natural objects to integrate.
 
 **Transcribe**: Schuller Lectures 10-11 (Differential forms).
 
+**Lecture resources for forms:**
+
+- **MIT 18.952 — Theory of Differential Forms (Guillemin)**:
+  https://ocw.mit.edu/courses/18-952-theory-of-differential-forms-spring-2012/
+  — deep dive if forms need reinforcement
+
 ### Month 9: Integration and de Rham cohomology
 
 **Primary text: Tu, Chapters 22-24**
@@ -1605,6 +1656,10 @@ indistinguishable (isometric).
 **Read**: Frankel, Chapters 9-10 for physical motivation: how metrics
 appear in mechanics, relativity, and continuum mechanics.
 
+**Companion notes: Stanford Math 215C (Andrew Lin)** — search online;
+a clean single-arc development of metrics → Levi-Civita → curvature →
+global results. Consider this your Phase 3 lecture spine.
+
 **Computation**: Work with metrics in Geomstats.
 
 ```python
@@ -1776,6 +1831,19 @@ also locally shortest paths.
   p
 - Geodesic completeness and the Hopf-Rinow theorem
 
+**Lecture resources:**
+
+- **Schuller — International Winter School on Gravity and Light
+  (2015)**:
+  https://www.youtube.com/playlist?list=PLFeEvEPtX_0S6vxxiiNPrJbLu9aK1UVC_
+  — "the best GR lecture series"— begin once geodesics and curvature
+  are familiar (Month 13-14); excellent companion through the rest of
+  Phase 3
+- **MIT 8.962 — General Relativity (Scott Hughes, 2020)**:
+  https://www.youtube.com/playlist?list=PLUl4u3cNGP629n_3fX7HmKKgin_rqGw4w
+  — full video course; see your Riemannian geometry applied to
+  spacetime
+
 **Key insight**: The exponential map "wraps" the tangent space onto the
 manifold via geodesics. In normal coordinates centered at p, geodesics
 through p are straight lines (at least near p). This is the sense in
@@ -1848,6 +1916,13 @@ print(f"Geodesic from {x0} with initial velocity {v0}")
 print(f"Final position: ({xs[-1, 0]:.4f}, {xs[-1, 1]:.4f})")
 print("(This traces part of a semicircle centered on the x-axis)")
 ```
+
+**Mechanics bridge (mid-Phase 3):**
+
+- **Darryl Holm — Geometric Mechanics Part I (Imperial College
+  notes)**: http://wwwf.imperial.ac.uk/~dholm/classnotes/ — start once
+  geodesics feel natural; cleanest "symmetry, reduction, momentum
+  maps" bridge
 
 ### Month 13: Curvature
 
@@ -2131,6 +2206,13 @@ curriculum. This is the minimum you need: enough to recognise a Lie
 group, find its Lie algebra, and understand how the adjoint and
 coadjoint representations connect algebra to geometry.
 
+**Lecture resources:**
+
+- **Schuller Lectures 15-17** remain primary
+- For deeper Lie theory: search for courses based on **Hall, *Lie
+  Groups, Lie Algebras, and Representations*** — several universities
+  post video
+
 **Week 1: Lie groups by example**
 
 
@@ -2386,9 +2468,28 @@ velocity in a precise sense.
 Part I** Available free at:
 https://people.math.ethz.ch/~acannas/Papers/lsg.pdf
 
-**Companion: Arnold, Chapter 7**
+**Companion: Arnold, Chapters 7-9** — but more than a companion: keep
+Arnold within arm's reach for all of Phase 4.
 
 Before manifolds, understand the linear algebra.
+
+**Lecture resources:**
+
+- **MIT 18.966 — Geometry of Manifolds II (Auroux)**:
+  https://ocw.mit.edu/courses/18-966-geometry-of-manifolds-ii-spring-2007/
+  — Denis Auroux is a major symplectic geometer; extremely on-target
+- **Tobias Osborne — Symplectic Geometry & Classical Mechanics**:
+  https://www.youtube.com/playlist?list=PLDfPUNusx1EoVnrQcCRishydtNBYU6A0c
+  — best used early Phase 4 to keep mechanics intuition dominant
+- **V. Balakrishnan — Classical Physics (IIT Madras)**:
+  https://www.youtube.com/playlist?list=PL5E4E56893588CBA8 — 38
+  lectures; among the best physics lecture series ever recorded
+- **Fields Academy — Symplectic Geometry (Ben Webster)**: search
+  Fields Institute YouTube — formal second voice for consolidation
+
+**Exercise bank:** Cambridge Part III Symplectic Geometry example
+sheets (search DPMMS) — schedule 1 sheet/month; this is where Phase 4
+transforms from reading to competence.
 
 **Week 1-2: Symplectic vector spaces**
 
@@ -2818,6 +2919,12 @@ print(f"\nRK4 is higher-order but shows secular drift.")
 print("Leapfrog errors oscillate but don't grow systematically.")
 ```
 
+**Lecture resources for geometric numerics:**
+
+- **Hairer — Geometric Numerical Integration**:
+  https://www.unige.ch/~hairer/software.html — companion materials to
+  the textbook; gold standard for structure-preserving numerics
+
 ### Celebrating Phase 4
 
 This was your destination. You now understand that classical mechanics
@@ -2947,6 +3054,16 @@ Muniain.
 
 Begin with what you know: electromagnetism. See how the familiar
 Maxwell equations point toward bundle structure.
+
+**Lecture resources:**
+
+- **José Figueroa-O'Farrill — Gauge Theory (Edinburgh)**:
+  https://empg.maths.ed.ac.uk/Activities/GT/ — legendary notes;
+  principal bundles → connections → curvature → Yang-Mills with
+  physics-native voice
+- **IAS/PCMI — Haydys: Introduction to Gauge Theory**: search IAS
+  YouTube — principal bundles/connections/curvature in the intended
+  spirit
 
 **Week 1-2: Review and reframe**
 
@@ -3087,6 +3204,18 @@ generality.
 - How Riemannian geometry fits: the Levi-Civita connection on the
   frame bundle
 
+**Milnor interlude (optional but rewarding):** Even 2-3 weeks with
+Milnor & Stasheff, *Characteristic Classes*, Chapters 1-5, changes how
+you see global structure. Characteristic classes detect when bundles
+are "twisted" in ways that cannot be untwisted.
+
+**Lecture resources:**
+
+- **MIT 18.969 — Dirac/Generalized Geometry (Gualtieri)**:
+  https://ocw.mit.edu/courses/18-969-topics-in-geometry-dirac-geometry-spring-2006/
+  — once symplectic, Poisson, and 2-form viewpoints feel fluid, this
+  unifies them; the "modern geometry payoff"
+
 **Key insight**: The Levi-Civita connection from Phase 3 is a connection
 on the frame bundle F(M). Its curvature is the Riemann curvature
 tensor. Riemannian geometry is gauge theory with structure group GL(n)
@@ -3202,6 +3331,13 @@ prototypes of the symmetry groups that matter for physical systems.
 The representation theory you glimpsed (adjoint, coadjoint) is what
 determines how features can transform.
 
+**Representation theory bridge:** If the Lie groups prelude feels thin
+for Phase 6, invest 2-3 weeks in representation theory before
+proceeding. Equivariant networks are *all about* representations.
+
+- **Hall, Chapters 1-4** or **Fulton & Harris, Part I** for reading
+- Search YouTube for "representation theory physics" for lecture options
+
 **Why this matters for Contravariant Systems**: Structure-preserving
 computation requires knowing what structure to preserve. The bundle
 language gives you a vocabulary for specifying symmetries, and
@@ -3240,6 +3376,22 @@ Neural networks encode geometric assumptions. Understanding these enables better
 - Graph neural networks as discrete geometry
 - The geometric deep learning blueprint
 
+**Lecture resources:**
+
+- **AMMI — Geometric Deep Learning Course**: search African Masters of
+  Machine Intelligence — full course arc with continuity
+- **Oxford — Geometric Deep Learning (Bronstein)**: search Oxford
+  YouTube — symmetry-first bridge from geometry to architectures
+- **GeometricDeepLearning.com lectures**:
+  https://geometricdeeplearning.com/lectures/ — complete recorded
+  series + slides
+
+**Key paper:** Cohen, Weiler, et al., "Gauge Equivariant CNNs" —
+connects Phase 5 bundles directly to architectures.
+
+**Implementation:** e3nn library (https://e3nn.org) — practical
+standard for SO(3)-equivariant networks.
+
 **Computation**: Implement equivariant layers for SO(3).
 
 ### Months 27-28: Physics-informed architectures
@@ -3250,6 +3402,12 @@ Neural networks encode geometric assumptions. Understanding these enables better
 - Lagrangian Neural Networks (Cranmer et al., 2020)
 - Neural ODEs with geometric structure
 - Symplectic neural networks
+
+**Lecture resources:**
+
+- **Steve Brunton — Machine Learning for Physics**:
+  https://www.youtube.com/c/Eigensteve — data-driven methods,
+  structure-preserving approaches; pairs with HNN/LNN implementations
 
 **Computation**: Implement and train HNNs and LNNs. Compare with black-box neural ODEs.
 
@@ -3266,6 +3424,14 @@ DEC is differential geometry for meshes.
 - Discrete exterior derivative
 - Discrete Hodge star
 - Applications: fluids, electromagnetism on meshes
+
+**Lecture resources:**
+
+- **CMU — Discrete Differential Geometry (Keenan Crane)**:
+  https://www.cs.cmu.edu/~kmcrane/Projects/DDG/ — computational
+  embodiment of DG; directly aligned with this month
+- **SIGGRAPH courses on discrete differential geometry**: search
+  YouTube — various excellent treatments
 
 ### Month 30: Final project
 
